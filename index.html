@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kitano Move-in Finder</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Kitano / Hachioji move-in dashboard</p>
+        <h1>키타노역 입주 생활품 검색 허브</h1>
+      </div>
+      <div class="move-date">
+        <span>입주 기준</span>
+        <strong>7월 28일</strong>
+      </div>
+    </header>
+
+    <main>
+      <section class="toolbar" aria-label="검색 설정">
+        <label>
+          기준 위치
+          <select id="locationSelect">
+            <option value="kitano">키타노역</option>
+            <option value="hachioji">하치오지역</option>
+          </select>
+        </label>
+        <label>
+          상황
+          <select id="modeSelect">
+            <option value="all">전체</option>
+            <option value="day1">도착 당일</option>
+            <option value="week1">첫 주</option>
+            <option value="work">재택/업무</option>
+            <option value="commute">출퇴근 대비</option>
+          </select>
+        </label>
+        <label class="searchbox">
+          빠른 필터
+          <input id="filterInput" type="search" placeholder="예: 매트리스, 세탁기, 칼" />
+        </label>
+      </section>
+
+      <section class="summary" aria-label="요약">
+        <article>
+          <span id="mustCount">0</span>
+          <p>우선 구매 후보</p>
+        </article>
+        <article>
+          <span id="checkedCount">0</span>
+          <p>체크 완료</p>
+        </article>
+        <article>
+          <span id="budgetTotal">¥0</span>
+          <p>대략 최소 예산</p>
+        </article>
+      </section>
+
+      <section class="split">
+        <aside class="panel">
+          <h2>근처 오프라인 후보</h2>
+          <div id="storeList" class="store-list"></div>
+        </aside>
+
+        <section>
+          <div class="section-head">
+            <h2>생활 필수품</h2>
+            <button id="resetChecks" type="button">체크 초기화</button>
+          </div>
+          <div id="itemGrid" class="item-grid"></div>
+        </section>
+      </section>
+    </main>
+
+    <template id="itemTemplate">
+      <article class="item-card">
+        <div class="item-top">
+          <label class="checkline">
+            <input type="checkbox" />
+            <span class="item-title"></span>
+          </label>
+          <span class="priority"></span>
+        </div>
+        <p class="item-meta"></p>
+        <p class="item-note"></p>
+        <div class="link-row"></div>
+      </article>
+    </template>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
