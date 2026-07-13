@@ -106,14 +106,6 @@ const stores = [
     coords: "35.655128,139.338979"
   },
   {
-    name: "ニトリ 八王子店",
-    cat: "가구",
-    tags: "매트리스, 침대, 소파, 책상, 의자",
-    query: "ニトリ 八王子店",
-    mapQuery: "ニトリ 八王子店",
-    coords: "35.666703,139.335524"
-  },
-  {
     name: "ダイソー 八王子オクトーレ店",
     cat: "100엔샵",
     tags: "100엔샵, 주방 소품, 청소 도구, 수납",
@@ -144,14 +136,6 @@ const stores = [
     query: "ドン・キホーテ 八王子駅前店",
     mapQuery: "ドン・キホーテ 八王子駅前店",
     coords: "35.658708,139.339068"
-  },
-  {
-    name: "ホームセンターコーナン 八王子オクトーレ店",
-    cat: "DIY",
-    tags: "DIY 침대, 공구, 조립 부품, 생활 설비",
-    query: "ホームセンターコーナン 八王子オクトーレ店",
-    mapQuery: "ホームセンターコーナン 八王子オクトーレ店",
-    coords: "35.659188,139.337823"
   }
 ];
 
@@ -289,7 +273,7 @@ function catToJa(cat) {
   }
 }
 
-const MAP_CATEGORIES = ["전체", "가전", "가구", "100엔샵", "생활잡화", "잡화", "DIY"];
+const MAP_CATEGORIES = ["전체", "가전", "100엔샵", "생활잡화", "잡화"];
 
 // ---------- DOM refs ----------
 const itemGrid = document.querySelector("#itemGrid");
