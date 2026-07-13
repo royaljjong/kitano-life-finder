@@ -97,13 +97,62 @@ const marketplaces = [
 ];
 
 const stores = [
-  { name: "ビックカメラ JR八王子駅店", cat: "가전", tags: "가전, 세탁기, 전자제품, 설치 상담", query: "ビックカメラ JR八王子駅店" },
-  { name: "ニトリ 八王子", cat: "가구", tags: "매트리스, 침대, 소파, 책상, 의자", query: "ニトリ 八王子" },
-  { name: "ダイソー 八王子駅", cat: "100엔샵", tags: "100엔샵, 주방 소품, 청소 도구, 수납", query: "ダイソー 八王子駅" },
-  { name: "セリア 八王子", cat: "100엔샵", tags: "100엔샵, 식기, 정리함, 생활 소품", query: "セリア 八王子" },
-  { name: "無印良品 八王子", cat: "생활잡화", tags: "침구, 수납, 식기, 생활잡화", query: "無印良品 八王子" },
-  { name: "ドン・キホーテ 八王子", cat: "잡화", tags: "야간 구매, 잡화, 전기포트, 생활품", query: "ドン・キホーテ 八王子" },
-  { name: "ホームセンター 八王子", cat: "DIY", tags: "DIY 침대, 공구, 조립 부품, 생활 설비", query: "ホームセンター 八王子" }
+  {
+    name: "ビックカメラ JR八王子駅店",
+    cat: "가전",
+    tags: "가전, 세탁기, 전자제품, 설치 상담",
+    query: "ビックカメラ JR八王子駅店",
+    mapQuery: "ビックカメラ JR八王子駅店",
+    coords: "35.655128,139.338979"
+  },
+  {
+    name: "ニトリ 八王子店",
+    cat: "가구",
+    tags: "매트리스, 침대, 소파, 책상, 의자",
+    query: "ニトリ 八王子店",
+    mapQuery: "ニトリ 八王子店",
+    coords: "35.666703,139.335524"
+  },
+  {
+    name: "ダイソー 八王子オクトーレ店",
+    cat: "100엔샵",
+    tags: "100엔샵, 주방 소품, 청소 도구, 수납",
+    query: "ダイソー 八王子オクトーレ店",
+    mapQuery: "ダイソー 八王子オクトーレ店",
+    coords: "35.659188,139.337823"
+  },
+  {
+    name: "セリア 八王子オクトーレ店",
+    cat: "100엔샵",
+    tags: "100엔샵, 식기, 정리함, 생활 소품",
+    query: "セリア 八王子オクトーレ店",
+    mapQuery: "セリア 八王子オクトーレ店",
+    coords: "35.659188,139.337823"
+  },
+  {
+    name: "無印良品 セレオ八王子",
+    cat: "생활잡화",
+    tags: "침구, 수납, 식기, 생활잡화",
+    query: "無印良品 セレオ八王子",
+    mapQuery: "無印良品 セレオ八王子",
+    coords: "35.656217,139.338821"
+  },
+  {
+    name: "ドン・キホーテ 八王子駅前店",
+    cat: "잡화",
+    tags: "야간 구매, 잡화, 전기포트, 생활품",
+    query: "ドン・キホーテ 八王子駅前店",
+    mapQuery: "ドン・キホーテ 八王子駅前店",
+    coords: "35.658708,139.339068"
+  },
+  {
+    name: "ホームセンターコーナン 八王子オクトーレ店",
+    cat: "DIY",
+    tags: "DIY 침대, 공구, 조립 부품, 생활 설비",
+    query: "ホームセンターコーナン 八王子オクトーレ店",
+    mapQuery: "ホームセンターコーナン 八王子オクトーレ店",
+    coords: "35.659188,139.337823"
+  }
 ];
 
 // 우선순위 시각/정렬 규칙
@@ -211,6 +260,14 @@ function mapEmbedSrc(query, zoom) {
 
 function mapOpenUrl(query) {
   return `https://www.google.com/maps/search/${encodeURIComponent(query)}`;
+}
+
+function storeMapTarget(store) {
+  return store.coords || store.mapQuery || store.query;
+}
+
+function storeOpenTarget(store) {
+  return store.mapQuery || store.query || store.coords;
 }
 
 function catToJa(cat) {
@@ -551,7 +608,7 @@ hideCheckedToggle.addEventListener("change", () => {
 function currentMapQuery() {
   const loc = stations[locationSelect.value];
   if (state.mapStore) {
-    return `${state.mapStore.query} ${loc}`;
+    return storeMapTarget(state.mapStore);
   }
   return `${catToJa(state.mapCategory === "전체" ? "all" : state.mapCategory)} ${loc}`;
 }
@@ -601,12 +658,11 @@ function renderMapStores() {
       updateMapFrame();
     });
 
-    const loc = stations[locationSelect.value];
     const dirLink = node.querySelector(".store-dir-link");
-    dirLink.href = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(store.query + " " + loc)}`;
+    dirLink.href = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(storeOpenTarget(store))}`;
 
     const openLink = node.querySelector(".store-open-link");
-    openLink.href = mapOpenUrl(`${store.query} ${loc}`);
+    openLink.href = mapOpenUrl(storeOpenTarget(store));
 
     mapStoreList.append(node);
   });
