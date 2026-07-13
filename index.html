@@ -3,89 +3,241 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kitano Move-in Finder</title>
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="키타노역 입주 직후 생활필수품을 우선순위로 정리하고, 라쿠텐·Amazon JP·니토리·빅카메라·지도 검색으로 바로 이동하는 준비 대시보드." />
+    <title>키타노역 입주 준비 대시보드</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="data:," />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header class="topbar">
-      <div>
-        <p class="eyebrow">Kitano / Hachioji move-in dashboard</p>
-        <h1>키타노역 입주 생활품 검색 허브</h1>
+      <div class="topbar-inner">
+        <div class="brand">
+          <p class="eyebrow">Kitano · Hachioji 이주 준비</p>
+          <h1>키타노역 입주 생활품 대시보드</h1>
+          <p class="lede">
+            입주 직후 필요한 물건을 우선순위로 정리하고, 일본 쇼핑몰과 지도 검색으로 바로 이동하세요.
+          </p>
+        </div>
+        <div class="dday" id="dday" aria-live="polite">
+          <span class="dday-badge" id="ddayBadge">D-day</span>
+          <span class="dday-label">입주 예정</span>
+          <strong class="dday-date">7월 28일</strong>
+        </div>
       </div>
-      <div class="move-date">
-        <span>입주 기준</span>
-        <strong>7월 28일</strong>
+      <div class="progress-strip" id="progressStrip" aria-live="polite">
+        <span class="progress-strip-bar" id="progressStripBar" aria-hidden="true"></span>
+        <span class="progress-strip-text" id="progressStripText">0/0 완료 · 남은 예산 ¥0</span>
       </div>
     </header>
 
+    <nav class="controlbar" aria-label="탭 및 검색 설정">
+      <div class="controlbar-inner">
+        <div class="tabs" role="tablist" aria-label="화면 전환">
+          <button class="tab-btn" id="tabChecklist" role="tab" aria-selected="true" aria-controls="panelChecklist" type="button">
+            체크리스트
+          </button>
+          <button class="tab-btn" id="tabMap" role="tab" aria-selected="false" aria-controls="panelMap" type="button">
+            지도
+          </button>
+        </div>
+        <div class="controlbar-controls">
+          <label class="field field-compact">
+            <span class="field-label">기준 위치</span>
+            <div class="select-wrap">
+              <select id="locationSelect">
+                <option value="kitano">키타노역</option>
+                <option value="hachioji">하치오지역</option>
+              </select>
+            </div>
+          </label>
+          <label class="field field-compact checklist-only">
+            <span class="field-label">상황</span>
+            <div class="select-wrap">
+              <select id="modeSelect">
+                <option value="all">전체 보기</option>
+                <option value="day1">도착 당일</option>
+                <option value="week1">첫 주</option>
+                <option value="work">재택 / 업무</option>
+                <option value="commute">출퇴근 대비</option>
+              </select>
+            </div>
+          </label>
+          <label class="field searchbox checklist-only">
+            <span class="field-label">빠른 검색</span>
+            <div class="search-wrap">
+              <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="7"></circle>
+                <line x1="21" y1="21" x2="16.5" y2="16.5"></line>
+              </svg>
+              <input id="filterInput" type="search" placeholder="예: 매트리스, 세탁기, 칼" autocomplete="off" />
+            </div>
+          </label>
+          <button id="optionsToggle" class="ghost-btn checklist-only" type="button" aria-expanded="false" aria-controls="searchOptions">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c.36.62 1 1 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            검색 옵션
+          </button>
+        </div>
+      </div>
+    </nav>
+
     <main>
-      <section class="toolbar" aria-label="검색 설정">
-        <label>
-          기준 위치
-          <select id="locationSelect">
-            <option value="kitano">키타노역</option>
-            <option value="hachioji">하치오지역</option>
-          </select>
-        </label>
-        <label>
-          상황
-          <select id="modeSelect">
-            <option value="all">전체</option>
-            <option value="day1">도착 당일</option>
-            <option value="week1">첫 주</option>
-            <option value="work">재택/업무</option>
-            <option value="commute">출퇴근 대비</option>
-          </select>
-        </label>
-        <label class="searchbox">
-          빠른 필터
-          <input id="filterInput" type="search" placeholder="예: 매트리스, 세탁기, 칼" />
-        </label>
-      </section>
-
-      <section class="summary" aria-label="요약">
-        <article>
-          <span id="mustCount">0</span>
-          <p>우선 구매 후보</p>
-        </article>
-        <article>
-          <span id="checkedCount">0</span>
-          <p>체크 완료</p>
-        </article>
-        <article>
-          <span id="budgetTotal">¥0</span>
-          <p>대략 최소 예산</p>
-        </article>
-      </section>
-
-      <section class="split">
-        <aside class="panel">
-          <h2>근처 오프라인 후보</h2>
-          <div id="storeList" class="store-list"></div>
-        </aside>
-
-        <section>
-          <div class="section-head">
-            <h2>생활 필수품</h2>
-            <button id="resetChecks" type="button">체크 초기화</button>
-          </div>
-          <div id="itemGrid" class="item-grid"></div>
+      <section id="panelChecklist" class="tabpanel" role="tabpanel" aria-labelledby="tabChecklist">
+        <section class="summary" aria-label="요약">
+          <article class="stat">
+            <div class="stat-head">
+              <span class="stat-icon">📋</span>
+              <p class="stat-label">우선 구매 후보</p>
+            </div>
+            <span class="stat-value" id="mustCount">0</span>
+          </article>
+          <article class="stat">
+            <div class="stat-head">
+              <span class="stat-icon">✅</span>
+              <p class="stat-label">체크 완료</p>
+            </div>
+            <span class="stat-value"><span id="checkedCount">0</span><span class="stat-sub" id="checkedTotal">/ 0</span></span>
+            <div class="progress" aria-hidden="true">
+              <span class="progress-bar" id="progressBar"></span>
+            </div>
+          </article>
+          <article class="stat">
+            <div class="stat-head">
+              <span class="stat-icon">💴</span>
+              <p class="stat-label">대략 최소 예산</p>
+            </div>
+            <span class="stat-value" id="budgetTotal">¥0</span>
+            <p class="stat-hint" id="budgetHint">미체크 항목 기준</p>
+          </article>
         </section>
+
+        <section id="searchOptions" class="options-panel hidden" aria-label="검색 옵션">
+          <p class="options-hint">가격·정렬은 지원하는 몰(Rakuten·Amazon·메루카리)에 적용되고, 나머지는 검색어에 반영됩니다.</p>
+          <div class="options-grid">
+            <div class="option-block">
+              <span class="option-label">표시할 쇼핑몰</span>
+              <div class="chip-row" id="shopChips"></div>
+            </div>
+            <label class="option-block">
+              <span class="option-label">예산 상한</span>
+              <div class="select-wrap">
+                <select id="maxBudgetSelect">
+                  <option value="0">상한 없음</option>
+                  <option value="5000">¥5,000</option>
+                  <option value="10000">¥10,000</option>
+                  <option value="20000">¥20,000</option>
+                  <option value="30000">¥30,000</option>
+                  <option value="50000">¥50,000</option>
+                </select>
+              </div>
+            </label>
+            <label class="option-block">
+              <span class="option-label">정렬</span>
+              <div class="select-wrap">
+                <select id="sortSelect">
+                  <option value="default">기본</option>
+                  <option value="price">가격 낮은순</option>
+                  <option value="review">리뷰 많은순</option>
+                </select>
+              </div>
+            </label>
+            <label class="option-block option-checkbox">
+              <input type="checkbox" id="freeShippingCheck" />
+              <span>送料無料만</span>
+            </label>
+          </div>
+        </section>
+
+        <div class="section-head">
+          <div>
+            <h2>생활 필수품</h2>
+            <p class="section-sub" id="itemCountLabel">전체 품목</p>
+          </div>
+          <div class="section-actions">
+            <label class="toggle-hide">
+              <input type="checkbox" id="hideCheckedToggle" />
+              <span>미완료만 보기</span>
+            </label>
+            <button id="resetChecks" type="button" class="ghost-btn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"></path></svg>
+              체크 초기화
+            </button>
+          </div>
+        </div>
+        <div id="itemGrid" class="item-groups"></div>
+        <p id="emptyState" class="empty-state hidden">조건에 맞는 품목이 없습니다. 필터를 조정해 보세요.</p>
+      </section>
+
+      <section id="panelMap" class="tabpanel hidden" role="tabpanel" aria-labelledby="tabMap">
+        <div class="map-chips" id="mapCategoryChips" role="group" aria-label="카테고리"></div>
+        <p class="map-hint">지도의 핀을 클릭하면 상호·영업시간·리뷰가 표시됩니다. 더 자세히 보려면 "구글맵에서 열기"를 누르세요.</p>
+        <div class="map-layout">
+          <div class="map-list-col">
+            <a id="mapOpenTop" class="map-open-link" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              구글맵에서 열기
+            </a>
+            <div id="mapStoreList" class="store-list"></div>
+          </div>
+          <div class="map-frame-col">
+            <iframe id="mapFrame" class="map-frame" title="주변 매장 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <a id="mapOpenBottom" class="map-open-link" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              구글맵에서 열기
+            </a>
+          </div>
+        </div>
       </section>
     </main>
+
+    <footer class="site-foot">
+      <p>상품 데이터를 저장하지 않는 정적 검색 허브입니다. 실제 가격·재고는 각 사이트에서 확인하세요.</p>
+    </footer>
 
     <template id="itemTemplate">
       <article class="item-card">
         <div class="item-top">
           <label class="checkline">
             <input type="checkbox" />
+            <span class="checkmark" aria-hidden="true"></span>
             <span class="item-title"></span>
           </label>
           <span class="priority"></span>
         </div>
-        <p class="item-meta"></p>
+        <div class="size-chips"></div>
+        <p class="item-keyword"></p>
         <p class="item-note"></p>
-        <div class="link-row"></div>
+        <div class="item-foot">
+          <span class="item-budget"></span>
+          <div class="link-row"></div>
+        </div>
+      </article>
+    </template>
+
+    <template id="storeTemplate">
+      <article class="store">
+        <div class="store-head">
+          <strong class="store-name"></strong>
+          <span class="store-cat"></span>
+        </div>
+        <span class="store-tags"></span>
+        <div class="store-actions">
+          <button type="button" class="store-show-btn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            지도에 표시
+          </button>
+          <a class="store-dir-link" target="_blank" rel="noreferrer">길찾기</a>
+          <a class="store-open-link" target="_blank" rel="noreferrer">구글맵 열기</a>
+        </div>
       </article>
     </template>
 
