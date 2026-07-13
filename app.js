@@ -112,6 +112,13 @@ const stores = [
     mapQuery: "Yodobashi Camera Hachioji"
   },
   {
+    name: "ヤマダデンキ テックランド八王子高尾店",
+    cat: "가전",
+    tags: "가전, 세탁기, 냉장고, 생활가전",
+    query: "ヤマダデンキ テックランド八王子高尾店",
+    mapQuery: "ヤマダデンキ テックランド八王子高尾店"
+  },
+  {
     name: "ニトリ 八王子店",
     cat: "가구",
     tags: "매트리스, 침대, 소파, 책상, 의자",
@@ -119,11 +126,39 @@ const stores = [
     mapQuery: "Nitori Hachioji Sanyu-machi 766-1"
   },
   {
+    name: "ニトリ 八王子みなみ野店",
+    cat: "가구",
+    tags: "매트리스, 침대, 수납, 생활가구",
+    query: "ニトリ 八王子みなみ野店",
+    mapQuery: "ニトリ 八王子みなみ野店"
+  },
+  {
+    name: "ニトリ イーアス高尾店",
+    cat: "가구",
+    tags: "매트리스, 책상, 의자, 생활가구",
+    query: "ニトリ イーアス高尾店",
+    mapQuery: "ニトリ イーアス高尾店"
+  },
+  {
+    name: "村内ファニチャーアクセス八王子本店",
+    cat: "가구",
+    tags: "대형 가구, 침대, 소파, 식탁, 의자",
+    query: "村内ファニチャーアクセス八王子本店",
+    mapQuery: "村内ファニチャーアクセス八王子本店"
+  },
+  {
     name: "ダイソー コピオ北野店",
     cat: "100엔샵",
     tags: "100엔샵, 주방 소품, 청소 도구, 수납, 키타노역 근처",
     query: "ダイソー コピオ北野店",
-    mapQuery: "Daiso Copio Kitano"
+    mapQuery: "ダイソー コピオ北野店 東京都八王子市北野町545-3"
+  },
+  {
+    name: "ダイソー ドン・キホーテ八王子駅前店",
+    cat: "100엔샵",
+    tags: "100엔샵, 하치오지역, 주방 소품, 생활 소모품",
+    query: "ダイソー ドン・キホーテ八王子駅前店",
+    mapQuery: "ダイソー ドン・キホーテ八王子駅前店"
   },
   {
     name: "セリア 八王子オクトーレ店",
@@ -152,6 +187,13 @@ const stores = [
     tags: "홈센터, 공구, 조립 부품, 수납, 생활 설비",
     query: "コーナン八王子オクトーレ店",
     mapQuery: "Kohnan Hachioji Octore"
+  },
+  {
+    name: "ハードオフ八王子大和田店",
+    cat: "중고",
+    tags: "중고 가전, 중고 생활용품, 리사イクルショップ",
+    query: "ハードオフ八王子大和田店",
+    mapQuery: "Hard Off Hachioji Owada"
   }
 ];
 
@@ -289,7 +331,7 @@ function catToJa(cat) {
   }
 }
 
-const MAP_CATEGORIES = ["전체", "가전", "가구", "100엔샵", "생활잡화", "잡화", "DIY"];
+const MAP_CATEGORIES = ["전체", "가전", "가구", "100엔샵", "생활잡화", "잡화", "DIY", "중고"];
 
 // ---------- DOM refs ----------
 const itemGrid = document.querySelector("#itemGrid");
