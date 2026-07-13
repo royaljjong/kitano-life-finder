@@ -102,40 +102,56 @@ const stores = [
     cat: "가전",
     tags: "가전, 세탁기, 전자제품, 설치 상담",
     query: "ビックカメラ JR八王子駅店",
-    mapQuery: "ビックカメラ JR八王子駅店",
-    coords: "35.655128,139.338979"
+    mapQuery: "Bic Camera JR Hachioji Station Store"
   },
   {
-    name: "ダイソー 八王子オクトーレ店",
+    name: "ヨドバシカメラ 八王子店",
+    cat: "가전",
+    tags: "가전, 전자제품, 주방가전, 생활가전",
+    query: "ヨドバシカメラ 八王子店",
+    mapQuery: "Yodobashi Camera Hachioji"
+  },
+  {
+    name: "ニトリ 八王子店",
+    cat: "가구",
+    tags: "매트리스, 침대, 소파, 책상, 의자",
+    query: "ニトリ 八王子店",
+    mapQuery: "Nitori Hachioji Sanyu-machi 766-1"
+  },
+  {
+    name: "ダイソー コピオ北野店",
     cat: "100엔샵",
-    tags: "100엔샵, 주방 소품, 청소 도구, 수납",
-    query: "ダイソー 八王子オクトーレ店",
-    mapQuery: "ダイソー 八王子オクトーレ店",
-    coords: "35.659188,139.337823"
+    tags: "100엔샵, 주방 소품, 청소 도구, 수납, 키타노역 근처",
+    query: "ダイソー コピオ北野店",
+    mapQuery: "Daiso Copio Kitano"
   },
   {
     name: "セリア 八王子オクトーレ店",
     cat: "100엔샵",
     tags: "100엔샵, 식기, 정리함, 생활 소품",
     query: "セリア 八王子オクトーレ店",
-    mapQuery: "セリア 八王子オクトーレ店",
-    coords: "35.659188,139.337823"
+    mapQuery: "Seria Hachioji Octore"
   },
   {
     name: "無印良品 セレオ八王子",
     cat: "생활잡화",
     tags: "침구, 수납, 식기, 생활잡화",
     query: "無印良品 セレオ八王子",
-    mapQuery: "無印良品 セレオ八王子",
-    coords: "35.656217,139.338821"
+    mapQuery: "MUJI CELEO Hachioji"
   },
   {
     name: "ドン・キホーテ 八王子駅前店",
     cat: "잡화",
     tags: "야간 구매, 잡화, 전기포트, 생활품",
     query: "ドン・キホーテ 八王子駅前店",
-    mapQuery: "ドン・キホーテ 八王子駅前店",
-    coords: "35.658708,139.339068"
+    mapQuery: "Don Quijote Hachioji Station"
+  },
+  {
+    name: "コーナン八王子オクトーレ店",
+    cat: "DIY",
+    tags: "홈센터, 공구, 조립 부품, 수납, 생활 설비",
+    query: "コーナン八王子オクトーレ店",
+    mapQuery: "Kohnan Hachioji Octore"
   }
 ];
 
@@ -247,11 +263,11 @@ function mapOpenUrl(query) {
 }
 
 function storeMapTarget(store) {
-  return store.coords || store.mapQuery || store.query;
+  return store.mapQuery || store.query;
 }
 
 function storeOpenTarget(store) {
-  return store.mapQuery || store.query || store.coords;
+  return store.mapQuery || store.query;
 }
 
 function catToJa(cat) {
@@ -273,7 +289,7 @@ function catToJa(cat) {
   }
 }
 
-const MAP_CATEGORIES = ["전체", "가전", "100엔샵", "생활잡화", "잡화"];
+const MAP_CATEGORIES = ["전체", "가전", "가구", "100엔샵", "생활잡화", "잡화", "DIY"];
 
 // ---------- DOM refs ----------
 const itemGrid = document.querySelector("#itemGrid");
