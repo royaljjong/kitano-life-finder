@@ -9,94 +9,123 @@ const stations = {
 const items = [
   { id: "mattress", title: "매트리스", base: "マットレス", category: "furniture",
     sizes: ["シングル", "セミダブル", "ダブル", "クイーン"], defaultSize: "クイーン",
-    priority: "당일", minBudget: 12000, mode: ["day1"],
-    note: "첫날 수면 품질이 바로 걸립니다. 퀸 사이즈는 압축·롤 배송 상품이면 반입이 쉽습니다." },
+    priority: "당일", minBudget: 15000, mode: ["day1"],
+    note: "첫날 수면 품질이 바로 걸립니다. 퀸 사이즈는 압축·롤 배송 상품이면 반입이 쉽습니다. 추천 상품은 상품 페이지에서 クイーン(퀸) 사이즈를 선택하세요.",
+    pick: { name: "高反発マットレス「純」3つ折り 10cm", price: 5555, rating: "4.43", reviews: "1.9만", url: "https://item.rakuten.co.jp/tansu/13810084/" } },
   { id: "bed", title: "침대 프레임 또는 DIY 받침", base: "ベッドフレーム すのこ", category: "furniture",
     sizes: ["シングル", "セミダブル", "ダブル", "クイーン"], defaultSize: "クイーン",
-    priority: "첫 주", minBudget: 10000, mode: ["week1"],
-    note: "당장은 매트리스만 쓰고, 첫 주에 스노코나 프레임을 붙이는 방식이 비용 부담이 낮습니다." },
+    priority: "첫 주", minBudget: 8000, mode: ["week1"],
+    note: "당장은 매트리스만 쓰고, 첫 주에 스노코나 프레임을 붙이는 방식이 비용 부담이 낮습니다.",
+    pick: { name: "스노코 침대(높이조절, DONDON)", price: 7498, rating: "4.29", reviews: "6,097", url: "https://item.rakuten.co.jp/dondon/ysb-001-s/" } },
   { id: "sofa", title: "소파", base: "ソファ 一人暮らし コンパクト", category: "furniture",
     priority: "낮음", minBudget: 8000, mode: ["week1"],
-    note: "1~2인용 콤팩트 소파. 방 폭과 반입 경로(문·엘리베이터)를 먼저 확인하세요." },
+    note: "1~2인용 콤팩트 소파. 방 폭과 반입 경로(문·엘리베이터)를 먼저 확인하세요.",
+    pick: { name: "和楽 콤팩트 2인 소파(일본제)", price: 19900, rating: "4.43", reviews: "7,457", url: "https://item.rakuten.co.jp/takamine/a01_pvc/" } },
   { id: "dining", title: "식사용 책상 및 의자", base: "ダイニングテーブル 2人用 椅子", category: "furniture",
-    priority: "첫 주", minBudget: 8000, mode: ["week1"],
-    note: "업무용 책상과 겸용할지 먼저 정하면 중복 구매를 줄일 수 있습니다." },
+    priority: "첫 주", minBudget: 7000, mode: ["week1"],
+    note: "업무용 책상과 겸용할지 먼저 정하면 중복 구매를 줄일 수 있습니다.",
+    pick: { name: "카페테이블+체어 세트", price: 6880, rating: "4.51", reviews: "697", url: "https://item.rakuten.co.jp/kaitekilife117/z103/" } },
   { id: "desk", title: "업무용 책상", base: "ワークデスク 幅100", category: "furniture",
-    priority: "업무", minBudget: 7000, mode: ["work"],
-    note: "모니터를 둘 예정이면 폭 100cm 이상, 깊이 55cm 이상부터 보는 편이 안정적입니다." },
+    priority: "업무", minBudget: 9000, mode: ["work"],
+    note: "모니터를 둘 예정이면 폭 100cm 이상, 깊이 55cm 이상부터 보는 편이 안정적입니다.",
+    pick: { name: "산와다이렉트 데스크 폭100", price: 9980, rating: "4.66", reviews: "494", url: "https://item.rakuten.co.jp/sanwadirect/100-deskf003/" } },
   { id: "chair", title: "업무용 의자", base: "オフィスチェア 在宅ワーク", category: "furniture",
-    priority: "업무", minBudget: 7000, mode: ["work"],
-    note: "재택이면 의자를 먼저 투자하고, 출퇴근이면 저가형부터 시작해도 됩니다." },
+    priority: "업무", minBudget: 4500, mode: ["work"],
+    note: "재택이면 의자를 먼저 투자하고, 출퇴근이면 저가형부터 시작해도 됩니다.",
+    pick: { name: "LOWYA 메쉬 오피스체어", price: 11990, rating: "4.35", reviews: "1.8만", url: "https://item.rakuten.co.jp/low-ya/vg-sirius/" } },
   { id: "washer", title: "세탁기", base: "洗濯機 一人暮らし 5kg 設置", category: "appliance",
-    priority: "첫 주", minBudget: 22000, mode: ["week1"],
-    note: "배송/설치/수거 비용을 같이 확인해야 실제 총액이 맞습니다." },
+    priority: "첫 주", minBudget: 26000, mode: ["week1"],
+    note: "배송/설치/수거 비용을 같이 확인해야 실제 총액이 맞습니다.",
+    pick: { name: "아이리스오야마 세탁기 6kg IAW-T604", price: 29800, rating: "4.37", reviews: "1,720", url: "https://item.rakuten.co.jp/enetroom/573828/" } },
   { id: "cookware", title: "냄비/프라이팬", base: "鍋 フライパン セット IH対応", category: "kitchen",
-    priority: "당일", minBudget: 3000, mode: ["day1"],
-    note: "집의 가열 방식이 IH인지 가스인지 확인하고 구매하세요." },
+    priority: "당일", minBudget: 3500, mode: ["day1"],
+    note: "집의 가열 방식이 IH인지 가스인지 확인하고 구매하세요.",
+    pick: { name: "CAROTE 팬·냄비 10점 세트(IH)", price: 6698, rating: "4.51", reviews: "2,909", url: "https://item.rakuten.co.jp/cookware-carote/j0333203429/" } },
   { id: "knife", title: "칼/도마/조리도구", base: "包丁 まな板 調理器具 セット", category: "kitchen",
     priority: "당일", minBudget: 2500, mode: ["day1"],
-    note: "100엔샵에서 시작하고, 칼만 별도 구매하는 구성이 실용적입니다." },
+    note: "100엔샵에서 시작하고, 칼만 별도 구매하는 구성이 실용적입니다.",
+    pick: { name: "Latuna 세라믹 산토쿠칼(일본제)", price: 3180, rating: "4.34", reviews: "2,806", url: "https://item.rakuten.co.jp/latuna/10000007/" } },
   { id: "tableware", title: "식기/수저/컵", base: "食器 一人暮らし セット", category: "kitchen",
-    priority: "당일", minBudget: 1500, mode: ["day1"],
-    note: "다이소/세리아에서 바로 해결하기 좋은 카테고리입니다." },
+    priority: "당일", minBudget: 2000, mode: ["day1"],
+    note: "다이소/세리아에서 바로 해결하기 좋은 카테고리입니다.",
+    pick: { name: "WAYOWAN 안 깨지는 식기 5점", price: 3740, rating: "4.73", reviews: "162", url: "https://item.rakuten.co.jp/asahikoyo/wayowan-5set/" } },
   { id: "cleaning", title: "청소/세탁 소모품", base: "掃除用品 洗濯洗剤 ハンガー", category: "supplies",
     priority: "당일", minBudget: 2500, mode: ["day1"],
-    note: "휴지, 쓰레기봉투, 세제, 행거는 도착 직후 필요합니다." },
+    note: "휴지, 쓰레기봉투, 세제, 행거는 도착 직후 필요합니다.",
+    pick: { name: "카오·라이온 세제 기프트세트", price: 1650, rating: "4.7", reviews: "135", url: "https://item.rakuten.co.jp/auc-hachidai/g430g10/" } },
   { id: "commute", title: "출퇴근 준비품", base: "通勤 バッグ 定期入れ 折りたたみ傘", category: "commute",
-    priority: "출퇴근", minBudget: 3000, mode: ["commute"],
-    note: "하치오지역 근처에서 가방, 우산, IC카드 케이스를 한 번에 찾기 좋습니다." },
-  { id: "fridge", title: "냉장고", base: "冷蔵庫 一人暮らし 150L", category: "appliance",
-    priority: "첫 주", minBudget: 20000, mode: ["week1"],
-    note: "배송·설치·기존 처분 비용을 함께 확인하세요. 150L 전후가 1인 가구에 무난합니다." },
+    priority: "출퇴근", minBudget: 4000, mode: ["commute"],
+    note: "하치오지역 근처에서 가방, 우산, IC카드 케이스를 한 번에 찾기 좋습니다.",
+    pick: { name: "방수 비즈니스 백팩 30L(PC수납)", price: 5988, rating: "4.52", reviews: "3,281", url: "https://item.rakuten.co.jp/aisfajapan/cs-01/" } },
+  { id: "fridge", title: "냉장고", base: "冷蔵庫 一人暮らし 170L", category: "appliance",
+    priority: "첫 주", minBudget: 28000, mode: ["week1"],
+    note: "자취 요리엔 150L보다 170L 전후가 여유 있습니다. 신품 170L은 ¥28,000~. 배송·설치·기존 처분 비용을 함께 확인하세요.",
+    pick: { name: "아이리스오야마 냉장고 170L 2도어", price: 32800, rating: "4.02", reviews: "260", url: "https://item.rakuten.co.jp/enetroom/573739/" } },
   { id: "microwave", title: "전자레인지", base: "電子レンジ 一人暮らし", category: "appliance",
-    priority: "첫 주", minBudget: 6000, mode: ["week1"],
-    note: "동일본(50Hz)/서일본(60Hz) 겸용인지 확인하면 재이사에도 안전합니다." },
+    priority: "첫 주", minBudget: 8000, mode: ["week1"],
+    note: "동일본(50Hz)/서일본(60Hz) 겸용인지 확인하면 재이사에도 안전합니다.",
+    pick: { name: "아이리스오야마 전자레인지 17L", price: 8980, rating: "4.36", reviews: "2,376", url: "https://item.rakuten.co.jp/kadenrand/560082/" } },
   { id: "ricecooker", title: "밥솥", base: "炊飯器 3合", category: "appliance",
-    priority: "첫 주", minBudget: 4000, mode: ["week1"],
-    note: "1인 가구는 3합이면 충분합니다." },
+    priority: "첫 주", minBudget: 6000, mode: ["week1"],
+    note: "1인 가구는 3합이면 충분합니다.",
+    pick: { name: "타이거 마이콘 밥솥 5.5합 JBH-G101W", price: 8980, rating: "4.63", reviews: "978", url: "https://item.rakuten.co.jp/rcmdki/t2-4904710418932/" } },
   { id: "kettle", title: "전기포트", base: "電気ケトル", category: "appliance",
     priority: "당일", minBudget: 2000, mode: ["day1"],
-    note: "라면·차·커피에 바로 필요합니다. 도착 당일 우선." },
+    note: "라면·차·커피에 바로 필요합니다. 도착 당일 우선.",
+    pick: { name: "Latuna 유리 전기케틀 1L", price: 3490, rating: "4.39", reviews: "3,306", url: "https://item.rakuten.co.jp/latuna/10000015/" } },
   { id: "vacuum", title: "청소기", base: "掃除機 スティック 軽量", category: "appliance",
-    priority: "첫 주", minBudget: 5000, mode: ["week1"],
-    note: "좁은 자취방은 가벼운 스틱형이 관리하기 편합니다." },
+    priority: "첫 주", minBudget: 6000, mode: ["week1"],
+    note: "좁은 자취방은 가벼운 스틱형이 관리하기 편합니다.",
+    pick: { name: "Orage C33 무선 스틱청소기", price: 7980, rating: "4.33", reviews: "6,543", url: "https://item.rakuten.co.jp/nanobig/cleaner_cordless_c33/" } },
   { id: "curtain", title: "커튼", base: "遮光カーテン 4枚セット", category: "supplies",
-    priority: "당일", minBudget: 3000, mode: ["day1"],
-    note: "프라이버시·햇빛 차단 때문에 첫날 밤 전에 필요합니다. 창 크기를 재고 사세요." },
+    priority: "당일", minBudget: 3700, mode: ["day1"],
+    note: "프라이버시·햇빛 차단 때문에 첫날 밤 전에 필요합니다. 창 크기를 재고 사세요.",
+    pick: { name: "満天 1급차광 커튼 4장(레이스 포함)", price: 8980, rating: "4.41", reviews: "3,941", url: "https://item.rakuten.co.jp/manten-curtain/s4p_syak_00/" } },
   { id: "bedding", title: "침구 세트(이불·베개·시트)", base: "掛け布団 敷きパッド 枕 シーツ", category: "supplies",
     sizes: ["シングル", "セミダブル", "ダブル", "クイーン"], defaultSize: "クイーン",
     priority: "당일", minBudget: 6000, mode: ["day1"],
-    note: "매트리스 사이즈(퀸)에 맞춰 시트·패드를 고르세요." },
+    note: "매트리스 사이즈(퀸)에 맞춰 시트·패드를 고르세요. 이불 본체는 니토리 매장 구매와 병행하면 편합니다.",
+    pick: { name: "noone 사텐 이불커버(면100·퀸 선택)", price: 4980, rating: "4.55", reviews: "5,518", url: "https://item.rakuten.co.jp/noone/saten-k-s/" } },
   { id: "light", title: "조명(실링라이트)", base: "シーリングライト LED 6畳", category: "appliance",
-    priority: "당일", minBudget: 4000, mode: ["day1"],
-    note: "일본 자취방은 조명이 없는 경우가 많습니다. 입주 전 설치 유무를 확인하세요." },
-  { id: "storage", title: "수납 선반/서랍", base: "収納ラック カラーボックス", category: "furniture",
-    priority: "첫 주", minBudget: 3000, mode: ["week1"],
-    note: "컬러박스·스틸랙으로 시작하면 저렴하고 확장이 쉽습니다." },
-  { id: "trash", title: "쓰레기통(분리수거)", base: "ゴミ箱 分別 ふた付き", category: "supplies",
-    priority: "당일", minBudget: 1500, mode: ["day1"],
-    note: "일본은 분리배출이 엄격합니다. 뚜껑 있는 분리형이 편합니다." },
-  { id: "dryer", title: "헤어드라이어", base: "ヘアドライヤー", category: "appliance",
     priority: "당일", minBudget: 2500, mode: ["day1"],
-    note: "도착 당일부터 필요합니다." },
+    note: "일본 자취방은 조명이 없는 경우가 많습니다. 입주 전 설치 유무를 확인하세요.",
+    pick: { name: "아이리스오야마 LED실링 6~8조(5년보증)", price: 2480, rating: "4.55", reviews: "5,910", url: "https://item.rakuten.co.jp/e-akari/sb-9800/" } },
+  { id: "storage", title: "수납 선반/서랍", base: "収納ラック カラーボックス", category: "furniture",
+    priority: "첫 주", minBudget: 2000, mode: ["week1"],
+    note: "컬러박스·스틸랙으로 시작하면 저렴하고 확장이 쉽습니다.",
+    pick: { name: "아이리스오야마 컬러박스 3단", price: 1980, rating: "4.44", reviews: "8,951", url: "https://item.rakuten.co.jp/rack-kan/431704/" } },
+  { id: "trash", title: "쓰레기통(분리수거)", base: "ゴミ箱 分別 ふた付き", category: "supplies",
+    priority: "당일", minBudget: 2500, mode: ["day1"],
+    note: "일본은 분리배출이 엄격합니다. 뚜껑 있는 분리형이 편합니다.",
+    pick: { name: "SOLOW 페달 분리수거 휴지통(공식)", price: 3850, rating: "4.51", reviews: "5,207", url: "https://item.rakuten.co.jp/risu-onlineshop/17746-3/" } },
+  { id: "dryer", title: "헤어드라이어", base: "ヘアドライヤー", category: "appliance",
+    priority: "당일", minBudget: 3000, mode: ["day1"],
+    note: "도착 당일부터 필요합니다.",
+    pick: { name: "SALONIA 스피디 이온드라이어(공식)", price: 5918, rating: "4.18", reviews: "8,866", url: "https://item.rakuten.co.jp/kobe-beauty-labo/sal004/" } },
   { id: "circulator", title: "서큘레이터/선풍기", base: "サーキュレーター 扇風機", category: "appliance",
     priority: "첫 주", minBudget: 4000, mode: ["week1"],
-    note: "환기·빨래 건조·냉난방 효율에 유용합니다." },
+    note: "환기·빨래 건조·냉난방 효율에 유용합니다.",
+    pick: { name: "DONDON 서큘레이터 360°(세척 가능)", price: 4980, rating: "4.43", reviews: "1.1만", url: "https://item.rakuten.co.jp/dondon/sq-001/" } },
   { id: "stove", title: "탁상 콘로(IH/가스)", base: "卓上IHコンロ 一人暮らし", category: "appliance",
-    priority: "당일", minBudget: 3000, mode: ["day1"],
-    note: "빌트인 콘로가 없는 방이 많습니다. 입주 전 확인하고, 없으면 탁상 IH나 카세트콘로부터 시작하세요." },
+    priority: "당일", minBudget: 4500, mode: ["day1"],
+    note: "빌트인 콘로가 없는 방이 많습니다. 입주 전 확인하고, 없으면 탁상 IH나 카세트콘로부터 시작하세요.",
+    pick: { name: "탁상 IH 쿠킹히터 1400W", price: 5480, rating: "4.48", reviews: "1,536", url: "https://item.rakuten.co.jp/e-kurashi/qt604/" } },
   { id: "router", title: "Wi-Fi 공유기", base: "Wi-Fiルーター 一人暮らし", category: "appliance",
     priority: "첫 주", minBudget: 5000, mode: ["week1", "work"],
-    note: "회선 개통 일정을 먼저 확인하세요. 개통 전에는 스마트폰 테더링으로 버틸 수 있습니다." },
+    note: "회선 개통 일정을 먼저 확인하세요. 개통 전에는 스마트폰 테더링으로 버틸 수 있습니다.",
+    pick: { name: "BUFFALO Wi-Fi6 공유기(3년보증)", price: 6800, rating: "4.62", reviews: "3,661", url: "https://item.rakuten.co.jp/justrich/1246-001780/" } },
   { id: "transformer", title: "변압기(한국 가전용)", base: "変圧器 アップトランス 100V 220V", category: "appliance",
-    priority: "당일", minBudget: 3000, mode: ["day1"],
-    note: "일본은 100V입니다. 한국에서 가져온 220V 전용 가전을 쓸 때만 필요합니다. 프리볼트(100-240V)면 불필요." },
+    priority: "당일", minBudget: 5000, mode: ["day1"],
+    note: "일본은 100V입니다. 한국에서 가져온 220V 전용 가전을 쓸 때만 필요합니다. 프리볼트(100-240V)면 불필요. 변압기는 사용 가전 소비전력(W) 합계보다 여유 있는 용량을 고르세요.",
+    pick: { name: "LVYUAN 승압·강압 변압기 2000W", price: 5298, rating: "4.59", reviews: "59", url: "https://item.rakuten.co.jp/taigan/vtf-2000va/" } },
   { id: "iron", title: "스팀다리미", base: "衣類スチーマー スチームアイロン", category: "appliance",
     priority: "출퇴근", minBudget: 3000, mode: ["commute", "work"],
-    note: "출근 셔츠 관리용. 걸어둔 채 쓰는 의류 스티머가 자취방에서 관리가 편합니다." },
+    note: "출근 셔츠 관리용. 걸어둔 채 쓰는 의류 스티머가 자취방에서 관리가 편합니다.",
+    pick: { name: "±0 의류스티머 XRS-D010", price: 9900, rating: "4.46", reviews: "9,699", url: "https://item.rakuten.co.jp/roomy/pmz19jun27b01/" } },
   { id: "hanko", title: "인감도장(はんこ)", base: "印鑑 認印 銀行印", category: "supplies",
     priority: "첫 주", minBudget: 1000, mode: ["week1"],
-    note: "은행 계좌·계약에 필요한 경우가 있습니다. 돈키호테나 はんこ집에서 당일 제작도 가능합니다." }
+    note: "은행 계좌·계약에 필요한 경우가 있습니다. 돈키호테나 はんこ집에서 당일 제작도 가능합니다.",
+    pick: { name: "인감·은행인 세트 흑수우(케이스 포함)", price: 1000, rating: "4.6", reviews: "4.7만", url: "https://item.rakuten.co.jp/hankoya-shop/k-jituin/" } }
 ];
 
 // appliesTo: "all" 또는 category 배열
@@ -104,7 +133,8 @@ const marketplaces = [
   { id: "rakuten", name: "Rakuten", appliesTo: "all" },
   { id: "amazon", name: "Amazon JP", appliesTo: "all" },
   { id: "yahoo", name: "Yahoo!쇼핑", appliesTo: "all" },
-  { id: "mercari", name: "메루카리", appliesTo: "all", used: true },
+  { id: "qoo10", name: "Qoo10", appliesTo: ["korean"] },
+  { id: "mercari", name: "메루카리", appliesTo: ["furniture", "appliance", "kitchen", "supplies", "commute"], used: true },
   { id: "nitori", name: "니토리", appliesTo: ["furniture", "kitchen", "supplies"] },
   { id: "ikea", name: "IKEA", appliesTo: ["furniture"] },
   { id: "muji", name: "무인양품", appliesTo: ["furniture", "kitchen", "supplies", "commute"] },
@@ -196,6 +226,20 @@ const stores = [
     tags: "드럭스토어, 일용품, 상비약, 하치오지역 북쪽 출구",
     query: "ウエルシア八王子駅北口店",
     mapQuery: "ウエルシア八王子駅北口店"
+  },
+  {
+    name: "業務スーパー 八王子店",
+    cat: "한국식품",
+    tags: "김치, 냉동식품, 한국 조미료 저가, 키타노역 도보 약 10분",
+    query: "業務スーパー 八王子店",
+    mapQuery: "業務スーパー 八王子店 八王子市長沼町"
+  },
+  {
+    name: "韓美膳DELI セレオ八王子",
+    cat: "한국식품",
+    tags: "한식 반찬, 김치, 나물, 도시락, 하치오지역 세레오 북관 1F",
+    query: "韓美膳DELI セレオ八王子",
+    mapQuery: "韓美膳DELI セレオ八王子"
   }
 ];
 
@@ -353,6 +397,30 @@ const kitCollections = {
       { id: "ic-case", title: "IC카드 케이스", base: "パスケース リール付き 定期入れ", category: "commute", tag: "출퇴근", minBudget: 1000, note: "Suica/PASMO 사용을 시작하면 바로 편해집니다." },
       { id: "emergency-pouch", title: "비상 파우치", base: "防災ポーチ 携帯トイレ モバイルバッテリー", category: "supplies", tag: "비상", minBudget: 2500, note: "보조배터리, 상비약, 휴대 화장지, 간단한 방재용품을 묶어 둡니다." }
     ]
+  },
+  korean: {
+    categories: ["전체", "조미료", "김치·반찬", "라면·즉석", "김·해조", "뷰티"],
+    mapQuery: "韓国食品 スーパー",
+    items: [
+      { id: "gochujang", title: "고추장", base: "コチュジャン ヘチャンドル", category: "korean", tag: "조미료", minBudget: 600, note: "해찬들·CJ 기준으로 검색합니다. 대용량은 業務スーパー가 저렴합니다." },
+      { id: "doenjang", title: "된장", base: "テンジャン 韓国 味噌", category: "korean", tag: "조미료", minBudget: 600, note: "일본 미소와 다른 한국 된장. 해찬들 재래식 된장 기준." },
+      { id: "ssamjang", title: "쌈장", base: "サムジャン 韓国", category: "korean", tag: "조미료", minBudget: 500, note: "고기 구워 먹을 때 필수. 튜브형이 보관 편합니다." },
+      { id: "gochugaru", title: "고춧가루", base: "唐辛子粉 韓国産 キムチ用", category: "korean", tag: "조미료", minBudget: 800, note: "김치·국물용. 일본 一味唐辛子와 매운맛이 다르니 韓国産 표기를 확인하세요." },
+      { id: "sesameoil", title: "참기름", base: "韓国 ごま油 オットギ", category: "korean", tag: "조미료", minBudget: 700, note: "오뚜기 참기름 기준. 나물·비빔밥에 필수." },
+      { id: "dashida", title: "다시다", base: "ダシダ 牛肉", category: "korean", tag: "조미료", minBudget: 500, note: "국물 요리 베이스. CJ 쇠고기 다시다가 표준입니다." },
+      { id: "aekjeot", title: "액젓(멸치·까나리)", base: "イワシエキス 韓国 魚醤", category: "korean", tag: "조미료", minBudget: 600, note: "김치·국 간맞춤용. 나ンプラー와는 풍미가 다릅니다." },
+      { id: "oligo", title: "올리고당·물엿", base: "韓国 オリゴ糖 水あめ", category: "korean", tag: "조미료", minBudget: 500, note: "조림·볶음 단맛용. 미림으로 대체 가능하지만 풍미가 다릅니다." },
+      { id: "kimchi", title: "김치", base: "韓国キムチ 宗家", category: "korean", tag: "김치·반찬", minBudget: 800, note: "종가(宗家) 김치 기준. 業務スーパー·한미젠DELI(세레오하치오지)에서도 살 수 있습니다." },
+      { id: "banchan", title: "밑반찬·나물", base: "韓国 ナムル おかず セット", category: "korean", tag: "김치·반찬", minBudget: 1000, note: "입주 초 요리가 힘들 때 냉장 반찬 세트가 유용합니다." },
+      { id: "ramyun", title: "한국 라면", base: "韓国ラーメン 辛ラーメン セット", category: "korean", tag: "라면·즉석", minBudget: 800, note: "신라면·너구리 등 박스 단위가 저렴합니다. 돈키호테에도 있습니다." },
+      { id: "instantrice", title: "즉석밥(햇반)", base: "韓国 即席ごはん ヘッパン", category: "korean", tag: "라면·즉석", minBudget: 1000, note: "밥솥 사기 전 임시 식사용으로도 좋습니다." },
+      { id: "gim", title: "한국김", base: "韓国海苔 お弁当用", category: "korean", tag: "김·해조", minBudget: 700, note: "도시락김 멀티팩 기준." },
+      { id: "miyeok", title: "미역", base: "韓国 わかめ 乾燥", category: "korean", tag: "김·해조", minBudget: 500, note: "미역국용 자른 미역. 일본 와카메보다 두껍습니다." },
+      { id: "skincare", title: "스킨케어", base: "韓国コスメ スキンケア", category: "korean", tag: "뷰티", minBudget: 1500, note: "쓰던 브랜드 그대로 검색하세요. Qoo10 메가와리(연 4회 대규모 할인) 시기가 가장 쌉니다." },
+      { id: "suncream", title: "선크림", base: "韓国 日焼け止め トーンアップ", category: "korean", tag: "뷰티", minBudget: 1000, note: "일본 여름 자외선 대비. 한국 제품은 Qoo10이 종류가 가장 많습니다." },
+      { id: "maskpack", title: "마스크팩", base: "韓国 シートマスク パック", category: "korean", tag: "뷰티", minBudget: 1000, note: "대용량 팩은 Qoo10 메가와리 때 묶음 구매가 유리합니다." },
+      { id: "cleansing", title: "클렌징", base: "韓国 クレンジング オイル", category: "korean", tag: "뷰티", minBudget: 1200, note: "쓰던 제품 재구매는 Qoo10·라쿠텐 공식스토어 위주로 확인하세요." }
+    ]
   }
 };
 
@@ -448,6 +516,8 @@ function searchUrl(mp, item) {
       if (opts.sort === "price") u += `&sort=price&order=asc`;
       return u;
     }
+    case "qoo10":
+      return `https://www.qoo10.jp/s/?keyword=${q}`;
     case "nitori":
       return `https://www.nitori-net.jp/ec/search/?q=${q}`;
     case "ikea":
@@ -492,6 +562,8 @@ function catToJa(cat) {
       return "ドラッグストア";
     case "슈퍼":
       return "スーパーマーケット";
+    case "한국식품":
+      return "韓国食品";
     case "생활잡화":
       return "生活雑貨";
     case "잡화":
@@ -503,7 +575,7 @@ function catToJa(cat) {
   }
 }
 
-const MAP_CATEGORIES = ["전체", "가전", "가구", "100엔샵", "드럭스토어", "슈퍼", "생활잡화", "잡화", "DIY"];
+const MAP_CATEGORIES = ["전체", "가전", "가구", "100엔샵", "드럭스토어", "슈퍼", "한국식품", "생활잡화", "잡화", "DIY"];
 
 // ---------- DOM refs ----------
 const itemGrid = document.querySelector("#itemGrid");
@@ -693,6 +765,25 @@ function toggleItemDetail(node) {
   detail.classList.toggle("hidden", isOpen);
 }
 
+function applyPick(node, thing) {
+  const pickBtn = node.querySelector(".item-pick-btn");
+  const pickBox = node.querySelector(".item-pick-box");
+  if (!pickBtn || !pickBox) return;
+  const pick = thing.pick;
+  if (pick) {
+    pickBtn.href = pick.url;
+    pickBtn.classList.remove("hidden");
+    pickBox.classList.remove("hidden");
+    node.querySelector(".item-pick-name").textContent = pick.name;
+    node.querySelector(".item-pick-meta").innerHTML =
+      `★${pick.rating} · 리뷰 ${pick.reviews} · ${yen(pick.price)}~ <em>2026-07 확인</em>`;
+    node.querySelector(".item-pick-go").href = pick.url;
+  } else {
+    pickBtn.classList.add("hidden");
+    pickBox.classList.add("hidden");
+  }
+}
+
 function buildItemCard(item) {
   const node = itemTemplate.content.firstElementChild.cloneNode(true);
   const checkbox = node.querySelector("input");
@@ -754,6 +845,8 @@ function buildItemCard(item) {
   });
 
   node.querySelector(".item-expand").addEventListener("click", () => toggleItemDetail(node));
+
+  applyPick(node, item);
 
   return node;
 }
@@ -854,6 +947,8 @@ function buildKitCard(kit) {
   });
 
   node.querySelector(".item-expand").addEventListener("click", () => toggleItemDetail(node));
+
+  applyPick(node, kit);
 
   return node;
 }
