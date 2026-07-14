@@ -142,6 +142,49 @@ const marketplaces = [
   { id: "biccamera", name: "빅카메라", appliesTo: ["appliance"] }
 ];
 
+// 카테고리별 추천 스토어 (라쿠텐 스토어 내 검색, sid는 2026-07 확인).
+// url 필드가 있으면 sid 대신 고정 링크로 연다.
+const recommendedShops = {
+  furniture: [
+    { name: "タンスのゲン", sid: 199397, note: "가구·침구 초대형" },
+    { name: "LOWYA", sid: 209653, note: "디자인 가구" },
+    { name: "モダンデコ", sid: 247678, note: "가구·계절가전" }
+  ],
+  appliance: [
+    { name: "Joshin web", sid: 206032, note: "가전 양판점" },
+    { name: "便利生活マイルーム", sid: 202126, note: "아이리스오야마 계열" },
+    { name: "モダンデコ", sid: 247678, note: "계절가전" }
+  ],
+  kitchen: [
+    { name: "CAROTE 공식", sid: 405489, note: "팬·냄비" },
+    { name: "Latuna", sid: 383832, note: "주방·소형가전" },
+    { name: "roomy", sid: 227333, note: "tower 생활잡화" }
+  ],
+  supplies: [
+    { name: "roomy", sid: 227333, note: "tower 생활잡화" },
+    { name: "満天カーテン", sid: 250309, note: "1급 차광 커튼" },
+    { name: "Noone", sid: 233966, note: "침구 커버" }
+  ],
+  korean: [
+    { name: "李朝園", sid: 233764, note: "김치·한식 전문" },
+    { name: "韓国世界のグルメ", sid: 110083, note: "한국식품 노포" },
+    { name: "オールネショップ", sid: 277968, note: "한국 수입식품" }
+  ],
+  koreanBeauty: [
+    { name: "OLIVE YOUNG 공식", url: "https://www.qoo10.jp/shop/oliveyoung", note: "K뷰티 Qoo10 공식몰" }
+  ]
+};
+
+function recommendedShopsFor(item) {
+  if (item.category === "korean" && item.tag === "뷰티") return recommendedShops.koreanBeauty;
+  return recommendedShops[item.category] || [];
+}
+
+function shopRecUrl(shop, item) {
+  if (shop.url) return shop.url;
+  return `https://search.rakuten.co.jp/search/mall/${encodeURIComponent(keywordFor(item))}/?sid=${shop.sid}`;
+}
+
 const stores = [
   {
     name: "ビックカメラ JR八王子駅店",
@@ -784,6 +827,32 @@ function applyPick(node, thing) {
   }
 }
 
+function renderShopRecs(node, thing) {
+  const line = node.querySelector(".shop-rec-line");
+  const row = node.querySelector(".shop-rec-row");
+  if (!line || !row) return;
+  const shops = recommendedShopsFor(thing);
+  row.innerHTML = "";
+  if (!shops.length) {
+    line.classList.add("hidden");
+    return;
+  }
+  line.classList.remove("hidden");
+  shops.forEach((shop) => {
+    const a = document.createElement("a");
+    a.className = "shop-rec";
+    a.target = "_blank";
+    a.rel = "noreferrer";
+    a.href = shopRecUrl(shop, thing);
+    const b = document.createElement("b");
+    b.textContent = shop.name;
+    const span = document.createElement("span");
+    span.textContent = shop.note;
+    a.append(b, span);
+    row.append(a);
+  });
+}
+
 function buildItemCard(item) {
   const node = itemTemplate.content.firstElementChild.cloneNode(true);
   const checkbox = node.querySelector("input");
@@ -843,6 +912,8 @@ function buildItemCard(item) {
     link.textContent = mp.name;
     links.append(link);
   });
+
+  renderShopRecs(node, item);
 
   node.querySelector(".item-expand").addEventListener("click", () => toggleItemDetail(node));
 
@@ -907,6 +978,7 @@ function refreshItemCard(node, item) {
   anchors.forEach((a, i) => {
     if (shops[i]) a.href = searchUrl(shops[i], item);
   });
+  renderShopRecs(node, item);
 }
 
 // ---------- Purchase kit tabs ----------
@@ -945,6 +1017,8 @@ function buildKitCard(kit) {
     link.textContent = mp.name;
     links.append(link);
   });
+
+  renderShopRecs(node, kit);
 
   node.querySelector(".item-expand").addEventListener("click", () => toggleItemDetail(node));
 
