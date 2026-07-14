@@ -81,7 +81,22 @@ const items = [
     note: "도착 당일부터 필요합니다." },
   { id: "circulator", title: "서큘레이터/선풍기", base: "サーキュレーター 扇風機", category: "appliance",
     priority: "첫 주", minBudget: 4000, mode: ["week1"],
-    note: "환기·빨래 건조·냉난방 효율에 유용합니다." }
+    note: "환기·빨래 건조·냉난방 효율에 유용합니다." },
+  { id: "stove", title: "탁상 콘로(IH/가스)", base: "卓上IHコンロ 一人暮らし", category: "appliance",
+    priority: "당일", minBudget: 3000, mode: ["day1"],
+    note: "빌트인 콘로가 없는 방이 많습니다. 입주 전 확인하고, 없으면 탁상 IH나 카세트콘로부터 시작하세요." },
+  { id: "router", title: "Wi-Fi 공유기", base: "Wi-Fiルーター 一人暮らし", category: "appliance",
+    priority: "첫 주", minBudget: 5000, mode: ["week1", "work"],
+    note: "회선 개통 일정을 먼저 확인하세요. 개통 전에는 스마트폰 테더링으로 버틸 수 있습니다." },
+  { id: "transformer", title: "변압기(한국 가전용)", base: "変圧器 アップトランス 100V 220V", category: "appliance",
+    priority: "당일", minBudget: 3000, mode: ["day1"],
+    note: "일본은 100V입니다. 한국에서 가져온 220V 전용 가전을 쓸 때만 필요합니다. 프리볼트(100-240V)면 불필요." },
+  { id: "iron", title: "스팀다리미", base: "衣類スチーマー スチームアイロン", category: "appliance",
+    priority: "출퇴근", minBudget: 3000, mode: ["commute", "work"],
+    note: "출근 셔츠 관리용. 걸어둔 채 쓰는 의류 스티머가 자취방에서 관리가 편합니다." },
+  { id: "hanko", title: "인감도장(はんこ)", base: "印鑑 認印 銀行印", category: "supplies",
+    priority: "첫 주", minBudget: 1000, mode: ["week1"],
+    note: "은행 계좌·계약에 필요한 경우가 있습니다. 돈키호테나 はんこ집에서 당일 제작도 가능합니다." }
 ];
 
 // appliesTo: "all" 또는 category 배열
@@ -93,6 +108,7 @@ const marketplaces = [
   { id: "nitori", name: "니토리", appliesTo: ["furniture", "kitchen", "supplies"] },
   { id: "ikea", name: "IKEA", appliesTo: ["furniture"] },
   { id: "muji", name: "무인양품", appliesTo: ["furniture", "kitchen", "supplies", "commute"] },
+  { id: "yodobashi", name: "요도바시", appliesTo: ["appliance"] },
   { id: "biccamera", name: "빅카메라", appliesTo: ["appliance"] }
 ];
 
@@ -152,6 +168,34 @@ const stores = [
     tags: "홈센터, 공구, 조립 부품, 수납, 생활 설비",
     query: "コーナン八王子オクトーレ店",
     mapQuery: "Kohnan Hachioji Octore"
+  },
+  {
+    name: "ニトリ 八王子みなみ野店",
+    cat: "가구",
+    tags: "가구, 침구, 커튼, 수납, 八王子みなみ野역 도보 4분(하치오지에서 JR요코하마선 2정거장)",
+    query: "ニトリ 八王子みなみ野店",
+    mapQuery: "ニトリ 八王子みなみ野店"
+  },
+  {
+    name: "京王ストア北野店",
+    cat: "슈퍼",
+    tags: "슈퍼마켓, 식재료, 반찬, 키타노역 고가 아래(京王リトナード)",
+    query: "京王ストア北野店",
+    mapQuery: "京王ストア北野店 八王子市打越町"
+  },
+  {
+    name: "クリエイトSD 八王子コピオ北野店",
+    cat: "드럭스토어",
+    tags: "세제, 일용 소모품, 화장지, 상비약, 키타노역 코피오",
+    query: "クリエイトSD 八王子コピオ北野店",
+    mapQuery: "クリエイト エス・ディー 八王子コピオ北野店"
+  },
+  {
+    name: "ウエルシア八王子駅北口店",
+    cat: "드럭스토어",
+    tags: "드럭스토어, 일용품, 상비약, 하치오지역 북쪽 출구",
+    query: "ウエルシア八王子駅北口店",
+    mapQuery: "ウエルシア八王子駅北口店"
   }
 ];
 
@@ -378,8 +422,12 @@ function searchUrl(mp, item) {
   const max = opts.maxBudget > 0 ? opts.maxBudget : null;
   switch (mp.id) {
     case "rakuten": {
+      const params = [];
+      if (max) params.push(`max=${max}`);
+      if (opts.sort === "price") params.push("s=2");
+      if (opts.sort === "review") params.push("s=5");
       let u = `https://search.rakuten.co.jp/search/mall/${q}/`;
-      if (max) u += `?max=${max}`;
+      if (params.length) u += `?${params.join("&")}`;
       return u;
     }
     case "amazon": {
@@ -389,8 +437,11 @@ function searchUrl(mp, item) {
       if (opts.sort === "review") u += `&s=review-rank`;
       return u;
     }
-    case "yahoo":
-      return `https://shopping.yahoo.co.jp/search?p=${q}`;
+    case "yahoo": {
+      let u = `https://shopping.yahoo.co.jp/search?p=${q}`;
+      if (max) u += `&pt=${max}`;
+      return u;
+    }
     case "mercari": {
       let u = `https://jp.mercari.com/search?keyword=${q}`;
       if (max) u += `&price_max=${max}`;
@@ -403,6 +454,8 @@ function searchUrl(mp, item) {
       return `https://www.ikea.com/jp/ja/search/?q=${q}`;
     case "muji":
       return `https://www.muji.com/jp/ja/store/search/cmdty/${q}`;
+    case "yodobashi":
+      return `https://www.yodobashi.com/?word=${q}`;
     case "biccamera":
       return `https://www.biccamera.com/bc/category/?q=${q}`;
     default:
@@ -432,9 +485,13 @@ function catToJa(cat) {
     case "가전":
       return "家電量販店";
     case "가구":
-      return "家具";
+      return "家具 ニトリ";
     case "100엔샵":
       return "100円ショップ";
+    case "드럭스토어":
+      return "ドラッグストア";
+    case "슈퍼":
+      return "スーパーマーケット";
     case "생활잡화":
       return "生活雑貨";
     case "잡화":
@@ -446,7 +503,7 @@ function catToJa(cat) {
   }
 }
 
-const MAP_CATEGORIES = ["전체", "가전", "100엔샵", "생활잡화", "잡화", "DIY"];
+const MAP_CATEGORIES = ["전체", "가전", "가구", "100엔샵", "드럭스토어", "슈퍼", "생활잡화", "잡화", "DIY"];
 
 // ---------- DOM refs ----------
 const itemGrid = document.querySelector("#itemGrid");
@@ -455,12 +512,6 @@ const storeTemplate = document.querySelector("#storeTemplate");
 const locationSelect = document.querySelector("#locationSelect");
 const modeSelect = document.querySelector("#modeSelect");
 const filterInput = document.querySelector("#filterInput");
-const checkedCount = document.querySelector("#checkedCount");
-const checkedTotal = document.querySelector("#checkedTotal");
-const mustCount = document.querySelector("#mustCount");
-const budgetTotal = document.querySelector("#budgetTotal");
-const budgetHint = document.querySelector("#budgetHint");
-const progressBar = document.querySelector("#progressBar");
 const progressStripBar = document.querySelector("#progressStripBar");
 const progressStripText = document.querySelector("#progressStripText");
 const itemCountLabel = document.querySelector("#itemCountLabel");
@@ -634,10 +685,17 @@ function visibleItems() {
     });
 }
 
+function toggleItemDetail(node) {
+  const expandBtn = node.querySelector(".item-expand");
+  const detail = node.querySelector(".item-detail");
+  const isOpen = expandBtn.getAttribute("aria-expanded") === "true";
+  expandBtn.setAttribute("aria-expanded", String(!isOpen));
+  detail.classList.toggle("hidden", isOpen);
+}
+
 function buildItemCard(item) {
   const node = itemTemplate.content.firstElementChild.cloneNode(true);
   const checkbox = node.querySelector("input");
-  const priority = node.querySelector(".priority");
   const isChecked = Boolean(state.checked[item.id]);
 
   checkbox.checked = isChecked;
@@ -652,33 +710,41 @@ function buildItemCard(item) {
 
   node.querySelector(".item-title").textContent = item.title;
   node.querySelector(".item-note").textContent = item.note;
-  node.querySelector(".item-budget").innerHTML = `최소 예상 <b>${yen(item.minBudget)}</b>`;
-  priority.textContent = item.priority;
-  priority.className = `priority ${priorityClass(item.priority)}`;
+  node.querySelector(".item-price").textContent = yen(item.minBudget);
 
-  const sizeChipsWrap = node.querySelector(".size-chips");
+  const sizeSelect = node.querySelector(".size-select");
   if (item.sizes) {
+    sizeSelect.classList.remove("hidden");
     item.sizes.forEach((size) => {
-      const chip = document.createElement("button");
-      chip.type = "button";
-      chip.className = "size-chip";
-      chip.textContent = size;
-      chip.classList.toggle("is-active", itemSize(item) === size);
-      chip.addEventListener("click", () => {
-        sizeState[item.id] = size;
-        saveSizeState();
-        refreshItemCard(node, item);
-      });
-      sizeChipsWrap.append(chip);
+      const opt = document.createElement("option");
+      opt.value = size;
+      opt.textContent = size;
+      sizeSelect.append(opt);
+    });
+    sizeSelect.value = itemSize(item);
+    sizeSelect.addEventListener("change", () => {
+      sizeState[item.id] = sizeSelect.value;
+      saveSizeState();
+      refreshItemCard(node, item);
     });
   } else {
-    sizeChipsWrap.classList.add("hidden");
+    sizeSelect.classList.add("hidden");
   }
 
-  node.querySelector(".item-keyword").textContent = keywordFor(item);
+  node.querySelector(".item-keyword").textContent = `검색어: ${keywordFor(item)}`;
+
+  const primaryLink = node.querySelector(".item-primary-link");
+  const shops = shopsForItem(item);
+  if (shops.length) {
+    primaryLink.href = searchUrl(shops[0], item);
+    primaryLink.textContent = `${shops[0].name} 검색`;
+    primaryLink.classList.remove("hidden");
+  } else {
+    primaryLink.classList.add("hidden");
+  }
 
   const links = node.querySelector(".link-row");
-  shopsForItem(item).forEach((mp) => {
+  shops.forEach((mp) => {
     const link = document.createElement("a");
     link.href = searchUrl(mp, item);
     link.target = "_blank";
@@ -686,6 +752,8 @@ function buildItemCard(item) {
     link.textContent = mp.name;
     links.append(link);
   });
+
+  node.querySelector(".item-expand").addEventListener("click", () => toggleItemDetail(node));
 
   return node;
 }
@@ -708,17 +776,21 @@ function renderItems() {
   PRIORITY_GROUPS.forEach((group) => {
     const groupItems = display.filter((it) => it.priority === group.key);
     if (!groupItems.length) return;
-    const section = document.createElement("div");
+    const section = document.createElement("section");
     section.className = "item-group";
-    const head = document.createElement("h3");
+    const head = document.createElement("header");
     head.className = "group-head";
+    const uncheckedBudget = groupItems
+      .filter((it) => !state.checked[it.id])
+      .reduce((sum, it) => sum + it.minBudget, 0);
     head.innerHTML =
       `<span class="group-dot ${PRIORITY[group.key].cls}"></span>` +
-      `${group.label}<span class="group-count">${groupItems.length}</span>`;
-    const grid = document.createElement("div");
-    grid.className = "item-grid";
-    groupItems.forEach((item) => grid.append(buildItemCard(item)));
-    section.append(head, grid);
+      `${group.label}<span class="group-count">${groupItems.length}</span>` +
+      `<span class="group-budget" data-group-budget="${group.key}">미체크 ${yen(uncheckedBudget)}</span>`;
+    const rows = document.createElement("div");
+    rows.className = "item-rows";
+    groupItems.forEach((item) => rows.append(buildItemCard(item)));
+    section.append(head, rows);
     itemGrid.append(section);
   });
 
@@ -727,13 +799,18 @@ function renderItems() {
 }
 
 function refreshItemCard(node, item) {
-  node.querySelectorAll(".size-chip").forEach((chip) => {
-    chip.classList.toggle("is-active", chip.textContent === itemSize(item));
-  });
-  node.querySelector(".item-keyword").textContent = keywordFor(item);
+  node.querySelector(".item-keyword").textContent = `검색어: ${keywordFor(item)}`;
+  const shops = shopsForItem(item);
+  const primaryLink = node.querySelector(".item-primary-link");
+  if (shops.length) {
+    primaryLink.href = searchUrl(shops[0], item);
+    primaryLink.textContent = `${shops[0].name} 검색`;
+    primaryLink.classList.remove("hidden");
+  } else {
+    primaryLink.classList.add("hidden");
+  }
   const links = node.querySelector(".link-row");
   const anchors = links.querySelectorAll("a");
-  const shops = shopsForItem(item);
   anchors.forEach((a, i) => {
     if (shops[i]) a.href = searchUrl(shops[i], item);
   });
@@ -750,14 +827,24 @@ function kitMapSearchUrl(tab) {
 
 function buildKitCard(kit) {
   const node = kitchenKitTemplate.content.firstElementChild.cloneNode(true);
-  node.querySelector(".kitchen-card-tag").textContent = kit.tag;
-  node.querySelector(".kitchen-card-title").textContent = kit.title;
-  node.querySelector(".kitchen-card-budget").textContent = `${yen(kit.minBudget)}~`;
-  node.querySelector(".kitchen-card-keyword").textContent = keywordFor(kit);
-  node.querySelector(".kitchen-card-note").textContent = kit.note;
+  node.querySelector(".item-tag").textContent = kit.tag;
+  node.querySelector(".item-title").textContent = kit.title;
+  node.querySelector(".item-price").textContent = `${yen(kit.minBudget)}~`;
+  node.querySelector(".item-keyword").textContent = `검색어: ${keywordFor(kit)}`;
+  node.querySelector(".item-note").textContent = kit.note;
+
+  const primaryLink = node.querySelector(".item-primary-link");
+  const shops = shopsForItem(kit);
+  if (shops.length) {
+    primaryLink.href = searchUrl(shops[0], kit);
+    primaryLink.textContent = `${shops[0].name} 검색`;
+    primaryLink.classList.remove("hidden");
+  } else {
+    primaryLink.classList.add("hidden");
+  }
 
   const links = node.querySelector(".link-row");
-  shopsForItem(kit).forEach((mp) => {
+  shops.forEach((mp) => {
     const link = document.createElement("a");
     link.href = searchUrl(mp, kit);
     link.target = "_blank";
@@ -765,6 +852,8 @@ function buildKitCard(kit) {
     link.textContent = mp.name;
     links.append(link);
   });
+
+  node.querySelector(".item-expand").addEventListener("click", () => toggleItemDetail(node));
 
   return node;
 }
@@ -803,12 +892,6 @@ function renderAllKitTabs() {
   Object.keys(kitCollections).forEach((tab) => renderKitTab(tab));
 }
 
-function stripBar(done, total) {
-  const segs = 10;
-  const filled = total ? Math.round((done / total) * segs) : 0;
-  return "▓".repeat(filled) + "░".repeat(segs - filled);
-}
-
 function renderSummary() {
   const filtered = visibleItems();
   const checked = filtered.filter((item) => state.checked[item.id]).length;
@@ -817,15 +900,17 @@ function renderSummary() {
     .reduce((sum, item) => sum + item.minBudget, 0);
   const pct = filtered.length ? Math.round((checked / filtered.length) * 100) : 0;
 
-  mustCount.textContent = String(filtered.length);
-  checkedCount.textContent = String(checked);
-  checkedTotal.textContent = `/ ${filtered.length}`;
-  progressBar.style.width = `${pct}%`;
-  budgetTotal.textContent = yen(remaining);
-  budgetHint.textContent = checked > 0 ? `미체크 ${filtered.length - checked}개 기준` : "미체크 항목 기준";
-
-  progressStripBar.textContent = stripBar(checked, filtered.length);
+  progressStripBar.style.width = `${pct}%`;
   progressStripText.textContent = `${checked}/${filtered.length} 완료 · 남은 예산 ${yen(remaining)}`;
+
+  // 그룹 헤더의 미체크 소계도 함께 갱신 (재렌더 없이 체크 토글만 일어난 경우)
+  document.querySelectorAll("[data-group-budget]").forEach((el) => {
+    const key = el.dataset.groupBudget;
+    const groupUnchecked = filtered
+      .filter((it) => it.priority === key && !state.checked[it.id])
+      .reduce((sum, it) => sum + it.minBudget, 0);
+    el.textContent = `미체크 ${yen(groupUnchecked)}`;
+  });
 }
 
 resetChecks.addEventListener("click", () => {

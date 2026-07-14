@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="progress-strip" id="progressStrip" aria-live="polite">
-        <span class="progress-strip-bar" id="progressStripBar" aria-hidden="true"></span>
+        <div class="progress-track" aria-hidden="true"><span class="progress-fill" id="progressStripBar"></span></div>
         <span class="progress-strip-text" id="progressStripText">0/0 완료 · 남은 예산 ¥0</span>
       </div>
     </header>
@@ -107,36 +107,8 @@
 
     <main>
       <section id="panelChecklist" class="tabpanel" role="tabpanel" aria-labelledby="tabChecklist">
-        <section class="summary" aria-label="요약">
-          <article class="stat">
-            <div class="stat-head">
-              <span class="stat-icon">📋</span>
-              <p class="stat-label">우선 구매 후보</p>
-            </div>
-            <span class="stat-value" id="mustCount">0</span>
-          </article>
-          <article class="stat">
-            <div class="stat-head">
-              <span class="stat-icon">✅</span>
-              <p class="stat-label">체크 완료</p>
-            </div>
-            <span class="stat-value"><span id="checkedCount">0</span><span class="stat-sub" id="checkedTotal">/ 0</span></span>
-            <div class="progress" aria-hidden="true">
-              <span class="progress-bar" id="progressBar"></span>
-            </div>
-          </article>
-          <article class="stat">
-            <div class="stat-head">
-              <span class="stat-icon">💴</span>
-              <p class="stat-label">대략 최소 예산</p>
-            </div>
-            <span class="stat-value" id="budgetTotal">¥0</span>
-            <p class="stat-hint" id="budgetHint">미체크 항목 기준</p>
-          </article>
-        </section>
-
         <section id="searchOptions" class="options-panel hidden" aria-label="검색 옵션">
-          <p class="options-hint">가격·정렬은 지원하는 몰(Rakuten·Amazon·메루카리)에 적용되고, 나머지는 검색어에 반영됩니다.</p>
+          <p class="options-hint">가격 상한은 Rakuten·Amazon·Yahoo·메루카리에, 정렬은 Rakuten·Amazon·메루카리에 적용됩니다. 나머지 조건은 검색어에 반영됩니다.</p>
           <div class="options-grid">
             <div class="option-block">
               <span class="option-label">표시할 쇼핑몰</span>
@@ -193,7 +165,7 @@
       </section>
 
       <section id="panelKitchen" class="tabpanel hidden" data-kit-panel="kitchen" role="tabpanel" aria-labelledby="tabKitchen">
-        <div class="kitchen-hero">
+        <div class="section-plain-head">
           <div>
             <p class="section-kicker">도착 당일 바로 쓰는 세트 구매</p>
             <h2>주방 도구와 자잘한 생활용품</h2>
@@ -205,11 +177,13 @@
           </a>
         </div>
         <div class="kitchen-filter" id="kitchenKitChips" data-kit-chips role="group" aria-label="주방 세트 카테고리"></div>
-        <div id="kitchenKitGrid" class="kitchen-grid" data-kit-grid></div>
+        <section class="item-group">
+          <div id="kitchenKitGrid" class="item-rows" data-kit-grid></div>
+        </section>
       </section>
 
       <section id="panelLiving" class="tabpanel hidden" data-kit-panel="living" role="tabpanel" aria-labelledby="tabLiving">
-        <div class="kitchen-hero">
+        <div class="section-plain-head">
           <div>
             <p class="section-kicker">방을 바로 생활 공간으로 만들기</p>
             <h2>거실·공용 공간</h2>
@@ -221,11 +195,13 @@
           </a>
         </div>
         <div class="kitchen-filter" data-kit-chips role="group" aria-label="거실 품목 카테고리"></div>
-        <div class="kitchen-grid" data-kit-grid></div>
+        <section class="item-group">
+          <div class="item-rows" data-kit-grid></div>
+        </section>
       </section>
 
       <section id="panelBath" class="tabpanel hidden" data-kit-panel="bath" role="tabpanel" aria-labelledby="tabBath">
-        <div class="kitchen-hero">
+        <div class="section-plain-head">
           <div>
             <p class="section-kicker">샤워·세탁·청소 루틴 준비</p>
             <h2>욕실·세탁 용품</h2>
@@ -237,11 +213,13 @@
           </a>
         </div>
         <div class="kitchen-filter" data-kit-chips role="group" aria-label="욕실 세탁 카테고리"></div>
-        <div class="kitchen-grid" data-kit-grid></div>
+        <section class="item-group">
+          <div class="item-rows" data-kit-grid></div>
+        </section>
       </section>
 
       <section id="panelBedroom" class="tabpanel hidden" data-kit-panel="bedroom" role="tabpanel" aria-labelledby="tabBedroom">
-        <div class="kitchen-hero">
+        <div class="section-plain-head">
           <div>
             <p class="section-kicker">잠자리와 정리 공간 먼저 안정화</p>
             <h2>침실·수납</h2>
@@ -253,11 +231,13 @@
           </a>
         </div>
         <div class="kitchen-filter" data-kit-chips role="group" aria-label="침실 수납 카테고리"></div>
-        <div class="kitchen-grid" data-kit-grid></div>
+        <section class="item-group">
+          <div class="item-rows" data-kit-grid></div>
+        </section>
       </section>
 
       <section id="panelWork" class="tabpanel hidden" data-kit-panel="work" role="tabpanel" aria-labelledby="tabWork">
-        <div class="kitchen-hero">
+        <div class="section-plain-head">
           <div>
             <p class="section-kicker">업무와 출퇴근을 끊기지 않게</p>
             <h2>업무·출퇴근</h2>
@@ -269,7 +249,9 @@
           </a>
         </div>
         <div class="kitchen-filter" data-kit-chips role="group" aria-label="업무 출퇴근 카테고리"></div>
-        <div class="kitchen-grid" data-kit-grid></div>
+        <section class="item-group">
+          <div class="item-rows" data-kit-grid></div>
+        </section>
       </section>
 
       <section id="panelMap" class="tabpanel hidden" role="tabpanel" aria-labelledby="tabMap">
@@ -281,7 +263,9 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
               구글맵에서 열기
             </a>
-            <div id="mapStoreList" class="store-list"></div>
+            <section class="item-group">
+              <div id="mapStoreList" class="item-rows store-list"></div>
+            </section>
           </div>
           <div class="map-frame-col">
             <iframe id="mapFrame" class="map-frame" title="주변 매장 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -299,56 +283,63 @@
     </footer>
 
     <template id="itemTemplate">
-      <article class="item-card">
-        <div class="item-top">
+      <div class="item-row">
+        <div class="item-row-main">
           <label class="checkline">
             <input type="checkbox" />
             <span class="checkmark" aria-hidden="true"></span>
             <span class="item-title"></span>
           </label>
-          <span class="priority"></span>
+          <select class="size-select hidden" aria-label="사이즈"></select>
+          <span class="item-price"></span>
+          <a class="item-primary-link" target="_blank" rel="noreferrer"></a>
+          <button type="button" class="item-expand" aria-expanded="false" aria-label="자세히">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </button>
         </div>
-        <div class="size-chips"></div>
-        <p class="item-keyword"></p>
-        <p class="item-note"></p>
-        <div class="item-foot">
-          <span class="item-budget"></span>
+        <div class="item-detail hidden">
+          <p class="item-note"></p>
+          <p class="item-keyword"></p>
           <div class="link-row"></div>
         </div>
-      </article>
+      </div>
     </template>
 
     <template id="storeTemplate">
-      <article class="store">
-        <div class="store-head">
+      <div class="item-row store-row">
+        <div class="store-row-top">
           <strong class="store-name"></strong>
           <span class="store-cat"></span>
-        </div>
-        <span class="store-tags"></span>
-        <div class="store-actions">
           <button type="button" class="store-show-btn">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             지도에 표시
           </button>
+        </div>
+        <p class="store-tags"></p>
+        <div class="store-links">
           <a class="store-dir-link" target="_blank" rel="noreferrer">길찾기</a>
           <a class="store-open-link" target="_blank" rel="noreferrer">구글맵 열기</a>
         </div>
-      </article>
+      </div>
     </template>
 
     <template id="kitchenKitTemplate">
-      <article class="kitchen-card">
-        <div class="kitchen-card-head">
-          <div>
-            <span class="kitchen-card-tag"></span>
-            <h3 class="kitchen-card-title"></h3>
-          </div>
-          <span class="kitchen-card-budget"></span>
+      <div class="item-row kit-row">
+        <div class="item-row-main">
+          <span class="item-tag"></span>
+          <span class="item-title"></span>
+          <span class="item-price"></span>
+          <a class="item-primary-link" target="_blank" rel="noreferrer"></a>
+          <button type="button" class="item-expand" aria-expanded="false" aria-label="자세히">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </button>
         </div>
-        <p class="kitchen-card-keyword"></p>
-        <p class="kitchen-card-note"></p>
-        <div class="link-row"></div>
-      </article>
+        <div class="item-detail hidden">
+          <p class="item-note"></p>
+          <p class="item-keyword"></p>
+          <div class="link-row"></div>
+        </div>
+      </div>
     </template>
 
     <script src="./app.js"></script>
