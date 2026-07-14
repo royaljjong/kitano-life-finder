@@ -527,6 +527,27 @@ function shopsForItem(item) {
   );
 }
 
+// 카테고리별 대표(첫 번째 버튼) 몰. 가전=요도바시(무료배송·설치 신뢰),
+// 소모품류=Amazon(빠른 배송·한국어 UI), 가구·한국식품=라쿠텐(전문 스토어 강세), 뷰티=Qoo10.
+const PRIMARY_SHOP_BY_CATEGORY = {
+  furniture: "rakuten",
+  appliance: "yodobashi",
+  kitchen: "amazon",
+  supplies: "amazon",
+  commute: "amazon",
+  korean: "rakuten"
+};
+
+function primaryShopFor(item) {
+  const shops = shopsForItem(item);
+  if (!shops.length) return null;
+  const preferredId =
+    item.category === "korean" && item.tag === "뷰티"
+      ? "qoo10"
+      : PRIMARY_SHOP_BY_CATEGORY[item.category];
+  return shops.find((mp) => mp.id === preferredId) || shops[0];
+}
+
 function searchUrl(mp, item) {
   const kw = keywordFor(item);
   const q = encodeURIComponent(kw);
@@ -894,17 +915,17 @@ function buildItemCard(item) {
   node.querySelector(".item-keyword").textContent = `검색어: ${keywordFor(item)}`;
 
   const primaryLink = node.querySelector(".item-primary-link");
-  const shops = shopsForItem(item);
-  if (shops.length) {
-    primaryLink.href = searchUrl(shops[0], item);
-    primaryLink.textContent = `${shops[0].name} 검색`;
+  const primaryShop = primaryShopFor(item);
+  if (primaryShop) {
+    primaryLink.href = searchUrl(primaryShop, item);
+    primaryLink.textContent = `${primaryShop.name} 검색`;
     primaryLink.classList.remove("hidden");
   } else {
     primaryLink.classList.add("hidden");
   }
 
   const links = node.querySelector(".link-row");
-  shops.forEach((mp) => {
+  shopsForItem(item).forEach((mp) => {
     const link = document.createElement("a");
     link.href = searchUrl(mp, item);
     link.target = "_blank";
@@ -964,17 +985,18 @@ function renderItems() {
 
 function refreshItemCard(node, item) {
   node.querySelector(".item-keyword").textContent = `검색어: ${keywordFor(item)}`;
-  const shops = shopsForItem(item);
+  const primaryShop = primaryShopFor(item);
   const primaryLink = node.querySelector(".item-primary-link");
-  if (shops.length) {
-    primaryLink.href = searchUrl(shops[0], item);
-    primaryLink.textContent = `${shops[0].name} 검색`;
+  if (primaryShop) {
+    primaryLink.href = searchUrl(primaryShop, item);
+    primaryLink.textContent = `${primaryShop.name} 검색`;
     primaryLink.classList.remove("hidden");
   } else {
     primaryLink.classList.add("hidden");
   }
   const links = node.querySelector(".link-row");
   const anchors = links.querySelectorAll("a");
+  const shops = shopsForItem(item);
   anchors.forEach((a, i) => {
     if (shops[i]) a.href = searchUrl(shops[i], item);
   });
@@ -999,17 +1021,17 @@ function buildKitCard(kit) {
   node.querySelector(".item-note").textContent = kit.note;
 
   const primaryLink = node.querySelector(".item-primary-link");
-  const shops = shopsForItem(kit);
-  if (shops.length) {
-    primaryLink.href = searchUrl(shops[0], kit);
-    primaryLink.textContent = `${shops[0].name} 검색`;
+  const primaryShop = primaryShopFor(kit);
+  if (primaryShop) {
+    primaryLink.href = searchUrl(primaryShop, kit);
+    primaryLink.textContent = `${primaryShop.name} 검색`;
     primaryLink.classList.remove("hidden");
   } else {
     primaryLink.classList.add("hidden");
   }
 
   const links = node.querySelector(".link-row");
-  shops.forEach((mp) => {
+  shopsForItem(kit).forEach((mp) => {
     const link = document.createElement("a");
     link.href = searchUrl(mp, kit);
     link.target = "_blank";
