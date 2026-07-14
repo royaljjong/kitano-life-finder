@@ -38,8 +38,53 @@
   --ring: 0 0 0 3px var(--accent-soft);
 }
 
+/* 수동 다크 */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #0e1218;
+  --bg-grad-1: #121821;
+  --bg-grad-2: #0e1218;
+  --ink: #eef2f7;
+  --ink-soft: #c3ccd8;
+  --muted: #8b97a6;
+  --line: #263140;
+  --line-soft: #1d2733;
+  --panel: #161d26;
+  --panel-2: #1b232e;
+  --accent: #38b39d;
+  --accent-ink: #6fd0bd;
+  --accent-soft: #16302b;
+  --warm: #e0824c;
+  --warm-soft: #33241a;
+
+  --p-urgent: #f08579;
+  --p-urgent-bg: #3a221f;
+  --p-soon: #e0b063;
+  --p-soon-bg: #362a17;
+  --p-work: #8cacf0;
+  --p-work-bg: #1f2a41;
+  --p-commute: #56c7b1;
+  --p-commute-bg: #163029;
+  --p-low: #9aa6b4;
+  --p-low-bg: #232d38;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow: 0 12px 34px -14px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 24px 56px -20px rgba(0, 0, 0, 0.7);
+  --ring: 0 0 0 3px rgba(56, 179, 157, 0.28);
+}
+
+/* 수동 라이트 */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* OS 자동(수동 라이트 선택 시 무시) */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
     --bg: #0e1218;
     --bg-grad-1: #121821;
     --bg-grad-2: #0e1218;
@@ -139,6 +184,21 @@ h1 {
   color: var(--muted);
   font-size: 13.5px;
 }
+
+.topbar-actions { display: flex; align-items: center; gap: 10px; }
+.theme-toggle {
+  width: 42px; height: 42px; flex: 0 0 auto;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: var(--panel); color: var(--ink-soft); cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent-ink); }
+.theme-toggle:focus-visible { outline: none; box-shadow: var(--ring); }
+.theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle.is-dark .icon-sun { display: block; }
+.theme-toggle.is-dark .icon-moon { display: none; }
 
 .dday {
   display: flex;
@@ -1371,6 +1431,10 @@ h2 {
 
   .dday {
     align-self: flex-start;
+  }
+
+  .topbar-actions .dday {
+    flex: 1;
   }
 
   .progress-strip {

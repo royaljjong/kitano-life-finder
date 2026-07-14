@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
     <link rel="icon" href="data:," />
+    <script>try{var t=localStorage.getItem("kitanoTheme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -25,10 +26,16 @@
             입주 직후 필요한 물건을 우선순위로 정리하고, 일본 쇼핑몰과 지도 검색으로 바로 이동하세요.
           </p>
         </div>
-        <div class="dday" id="dday" aria-live="polite">
-          <span class="dday-badge" id="ddayBadge">D-day</span>
-          <span class="dday-label">입주 예정</span>
-          <strong class="dday-date">7월 28일</strong>
+        <div class="topbar-actions">
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="라이트/다크 모드 전환" title="라이트/다크 전환">
+            <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+          <div class="dday" id="dday" aria-live="polite">
+            <span class="dday-badge" id="ddayBadge">D-day</span>
+            <span class="dday-label">입주 예정</span>
+            <strong class="dday-date">7월 28일</strong>
+          </div>
         </div>
       </div>
       <div class="progress-strip" id="progressStrip" aria-live="polite">

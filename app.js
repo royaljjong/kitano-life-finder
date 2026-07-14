@@ -7,11 +7,11 @@ const stations = {
 
 // category: furniture | appliance | kitchen | supplies | commute
 const items = [
-  { id: "mattress", title: "매트리스", base: "マットレス", category: "furniture",
+  { id: "mattress", title: "매트리스", base: "マットレス 低反発", category: "furniture",
     sizes: ["シングル", "セミダブル", "ダブル", "クイーン"], defaultSize: "クイーン",
-    priority: "당일", minBudget: 15000, mode: ["day1"],
-    note: "첫날 수면 품질이 바로 걸립니다. 퀸 사이즈는 압축·롤 배송 상품이면 반입이 쉽습니다. 추천 상품은 상품 페이지에서 クイーン(퀸) 사이즈를 선택하세요.",
-    pick: { name: "高反発マットレス「純」3つ折り 10cm", price: 5555, rating: "4.43", reviews: "1.9만", url: "https://item.rakuten.co.jp/tansu/13810084/" } },
+    priority: "당일", minBudget: 13000, mode: ["day1"],
+    note: "푹신한 저반발(低反発) 기준. 퀸은 압축·롤 배송이면 반입이 쉽습니다. 저반발은 여름에 다소 더울 수 있어 냉감 패드(침구 세트 참고)를 위에 깔면 좋습니다. 추천 상품 페이지에서 クイーン(퀸)을 선택하세요.",
+    pick: { name: "저반발 매트리스 8cm やわらか 90N(퀸 ¥13,420)", price: 13420, rating: "4.28", reviews: "3.8만", url: "https://item.rakuten.co.jp/maxshare/a05750_sale/" } },
   { id: "bed", title: "침대 프레임 또는 DIY 받침", base: "ベッドフレーム すのこ", category: "furniture",
     sizes: ["シングル", "セミダブル", "ダブル", "クイーン"], defaultSize: "クイーン",
     priority: "첫 주", minBudget: 8000, mode: ["week1"],
@@ -714,6 +714,28 @@ const mapFrame = document.querySelector("#mapFrame");
 const mapOpenTop = document.querySelector("#mapOpenTop");
 const mapOpenBottom = document.querySelector("#mapOpenBottom");
 const kitchenKitTemplate = document.querySelector("#kitchenKitTemplate");
+
+// ---------- Theme ----------
+const themeToggle = document.querySelector("#themeToggle");
+const themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
+
+function effectiveTheme() {
+  return localStorage.getItem("kitanoTheme") || (themeMedia.matches ? "dark" : "light");
+}
+
+function applyTheme() {
+  const stored = localStorage.getItem("kitanoTheme");
+  if (stored) document.documentElement.dataset.theme = stored;
+  else delete document.documentElement.dataset.theme;
+  themeToggle.classList.toggle("is-dark", effectiveTheme() === "dark");
+}
+
+themeToggle.addEventListener("click", () => {
+  localStorage.setItem("kitanoTheme", effectiveTheme() === "dark" ? "light" : "dark");
+  applyTheme();
+});
+themeMedia.addEventListener("change", applyTheme);
+applyTheme();
 
 const MODE_LABELS = {
   all: "전체 품목",
