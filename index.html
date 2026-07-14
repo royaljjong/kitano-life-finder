@@ -43,6 +43,21 @@
           <button class="tab-btn" id="tabChecklist" role="tab" aria-selected="true" aria-controls="panelChecklist" type="button">
             체크리스트
           </button>
+          <button class="tab-btn" id="tabKitchen" data-kit-tab="kitchen" role="tab" aria-selected="false" aria-controls="panelKitchen" type="button">
+            주방·소품
+          </button>
+          <button class="tab-btn" id="tabLiving" data-kit-tab="living" role="tab" aria-selected="false" aria-controls="panelLiving" type="button">
+            거실
+          </button>
+          <button class="tab-btn" id="tabBath" data-kit-tab="bath" role="tab" aria-selected="false" aria-controls="panelBath" type="button">
+            욕실·세탁
+          </button>
+          <button class="tab-btn" id="tabBedroom" data-kit-tab="bedroom" role="tab" aria-selected="false" aria-controls="panelBedroom" type="button">
+            침실·수납
+          </button>
+          <button class="tab-btn" id="tabWork" data-kit-tab="work" role="tab" aria-selected="false" aria-controls="panelWork" type="button">
+            업무·출퇴근
+          </button>
           <button class="tab-btn" id="tabMap" role="tab" aria-selected="false" aria-controls="panelMap" type="button">
             지도
           </button>
@@ -177,6 +192,86 @@
         <p id="emptyState" class="empty-state hidden">조건에 맞는 품목이 없습니다. 필터를 조정해 보세요.</p>
       </section>
 
+      <section id="panelKitchen" class="tabpanel hidden" data-kit-panel="kitchen" role="tabpanel" aria-labelledby="tabKitchen">
+        <div class="kitchen-hero">
+          <div>
+            <p class="section-kicker">도착 당일 바로 쓰는 세트 구매</p>
+            <h2>주방 도구와 자잘한 생활용품</h2>
+            <p class="section-sub">식칼·도마·조리도구처럼 따로 고르면 번거로운 품목을 세트 검색 중심으로 모았습니다.</p>
+          </div>
+          <a id="kitchenMapLink" class="map-open-link" data-kit-map-link target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            근처 100엔샵 찾기
+          </a>
+        </div>
+        <div class="kitchen-filter" id="kitchenKitChips" data-kit-chips role="group" aria-label="주방 세트 카테고리"></div>
+        <div id="kitchenKitGrid" class="kitchen-grid" data-kit-grid></div>
+      </section>
+
+      <section id="panelLiving" class="tabpanel hidden" data-kit-panel="living" role="tabpanel" aria-labelledby="tabLiving">
+        <div class="kitchen-hero">
+          <div>
+            <p class="section-kicker">방을 바로 생활 공간으로 만들기</p>
+            <h2>거실·공용 공간</h2>
+            <p class="section-sub">소파, 러그, 낮은 테이블, 전원탭처럼 있으면 생활감이 바로 잡히는 품목을 모았습니다.</p>
+          </div>
+          <a class="map-open-link" data-kit-map-link target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            근처 가구·잡화점 찾기
+          </a>
+        </div>
+        <div class="kitchen-filter" data-kit-chips role="group" aria-label="거실 품목 카테고리"></div>
+        <div class="kitchen-grid" data-kit-grid></div>
+      </section>
+
+      <section id="panelBath" class="tabpanel hidden" data-kit-panel="bath" role="tabpanel" aria-labelledby="tabBath">
+        <div class="kitchen-hero">
+          <div>
+            <p class="section-kicker">샤워·세탁·청소 루틴 준비</p>
+            <h2>욕실·세탁 용품</h2>
+            <p class="section-sub">수건, 샴푸랙, 빨래바구니, 세제, 욕실 청소도구처럼 자잘하지만 바로 필요한 품목입니다.</p>
+          </div>
+          <a class="map-open-link" data-kit-map-link target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            근처 생활잡화점 찾기
+          </a>
+        </div>
+        <div class="kitchen-filter" data-kit-chips role="group" aria-label="욕실 세탁 카테고리"></div>
+        <div class="kitchen-grid" data-kit-grid></div>
+      </section>
+
+      <section id="panelBedroom" class="tabpanel hidden" data-kit-panel="bedroom" role="tabpanel" aria-labelledby="tabBedroom">
+        <div class="kitchen-hero">
+          <div>
+            <p class="section-kicker">잠자리와 정리 공간 먼저 안정화</p>
+            <h2>침실·수납</h2>
+            <p class="section-sub">침구, 행거, 서랍, 박스, 창문 주변 용품처럼 입주 첫 주에 체감이 큰 품목입니다.</p>
+          </div>
+          <a class="map-open-link" data-kit-map-link target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            근처 수납·침구점 찾기
+          </a>
+        </div>
+        <div class="kitchen-filter" data-kit-chips role="group" aria-label="침실 수납 카테고리"></div>
+        <div class="kitchen-grid" data-kit-grid></div>
+      </section>
+
+      <section id="panelWork" class="tabpanel hidden" data-kit-panel="work" role="tabpanel" aria-labelledby="tabWork">
+        <div class="kitchen-hero">
+          <div>
+            <p class="section-kicker">업무와 출퇴근을 끊기지 않게</p>
+            <h2>업무·출퇴근</h2>
+            <p class="section-sub">책상 주변 전원·케이블, 가방, 우산, 문구, 통근 소품을 한 번에 찾는 탭입니다.</p>
+          </div>
+          <a class="map-open-link" data-kit-map-link target="_blank" rel="noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            근처 문구·전자점 찾기
+          </a>
+        </div>
+        <div class="kitchen-filter" data-kit-chips role="group" aria-label="업무 출퇴근 카테고리"></div>
+        <div class="kitchen-grid" data-kit-grid></div>
+      </section>
+
       <section id="panelMap" class="tabpanel hidden" role="tabpanel" aria-labelledby="tabMap">
         <div class="map-chips" id="mapCategoryChips" role="group" aria-label="카테고리"></div>
         <p class="map-hint">지도의 핀을 클릭하면 상호·영업시간·리뷰가 표시됩니다. 더 자세히 보려면 "구글맵에서 열기"를 누르세요.</p>
@@ -238,6 +333,21 @@
           <a class="store-dir-link" target="_blank" rel="noreferrer">길찾기</a>
           <a class="store-open-link" target="_blank" rel="noreferrer">구글맵 열기</a>
         </div>
+      </article>
+    </template>
+
+    <template id="kitchenKitTemplate">
+      <article class="kitchen-card">
+        <div class="kitchen-card-head">
+          <div>
+            <span class="kitchen-card-tag"></span>
+            <h3 class="kitchen-card-title"></h3>
+          </div>
+          <span class="kitchen-card-budget"></span>
+        </div>
+        <p class="kitchen-card-keyword"></p>
+        <p class="kitchen-card-note"></p>
+        <div class="link-row"></div>
       </article>
     </template>
 
