@@ -53,10 +53,10 @@ const items = [
     priority: "당일", minBudget: 2500, mode: ["day1"],
     note: "휴지, 쓰레기봉투, 세제, 행거는 도착 직후 필요합니다.",
     pick: { name: "카오·라이온 세제 기프트세트", price: 1650, rating: "4.7", reviews: "135", url: "https://item.rakuten.co.jp/auc-hachidai/g430g10/" } },
-  { id: "commute", title: "출퇴근 준비품", base: "通勤 バッグ 定期入れ 折りたたみ傘", category: "commute",
-    priority: "출퇴근", minBudget: 4000, mode: ["commute"],
-    note: "하치오지역 근처에서 가방, 우산, IC카드 케이스를 한 번에 찾기 좋습니다.",
-    pick: { name: "방수 비즈니스 백팩 30L(PC수납)", price: 5988, rating: "4.52", reviews: "3,281", url: "https://item.rakuten.co.jp/aisfajapan/cs-01/" } },
+  { id: "commute", title: "IC카드 케이스", base: "パスケース リール付き 定期入れ", category: "commute",
+    priority: "출퇴근", minBudget: 1000, mode: ["commute"],
+    note: "가방·우산은 이미 보유. Suica/PASMO를 쓰기 시작하면 릴 부착 케이스가 개찰에서 바로 편해집니다.",
+    pick: { name: "릴 부착 패스케이스(anan 게재)", price: 1280, rating: "4.56", reviews: "3,153", url: "https://item.rakuten.co.jp/rareleak/fo-idcase-rbn-in/" } },
   { id: "fridge", title: "냉장고", base: "冷蔵庫 一人暮らし 170L", category: "appliance",
     priority: "첫 주", minBudget: 28000, mode: ["week1"],
     note: "자취 요리엔 150L보다 170L 전후가 여유 있습니다. 신품 170L은 ¥28,000~. 배송·설치·기존 처분 비용을 함께 확인하세요.",
@@ -161,7 +161,11 @@ const items = [
   { id: "bicycle", title: "자전거", base: "自転車 26インチ シティサイクル", category: "commute",
     priority: "출퇴근", minBudget: 18000, mode: ["commute"],
     note: "구매 시 방범등록(防犯登録, 약 ¥660)이 의무입니다. 매장 구매면 현장에서 바로 등록됩니다.",
-    pick: { name: "크로스바이크 26인치 시마노 6단(8년 연속 1위)", price: 20800, rating: "4.32", reviews: "9,649", url: "https://item.rakuten.co.jp/smart-factory/gr-001/" } }
+    pick: { name: "크로스바이크 26인치 시마노 6단(8년 연속 1위)", price: 20800, rating: "4.32", reviews: "9,649", url: "https://item.rakuten.co.jp/smart-factory/gr-001/" } },
+  { id: "footrest", title: "발 받침대", base: "フットレスト デスク下", category: "furniture",
+    priority: "업무", minBudget: 2000, mode: ["work"],
+    note: "의자 높이를 몸에 맞추면 발이 뜨기 쉽습니다. 데스크 아래 발 받침이 있으면 장시간 착석이 편해집니다.",
+    pick: { name: "저반발 데스크 발 받침(랭킹 1위)", price: 3980, rating: "4.59", reviews: "430", url: "https://item.rakuten.co.jp/relief10/10000016/" } }
 ];
 
 // appliesTo: "all" 또는 category 배열
@@ -460,7 +464,7 @@ const kitCollections = {
     ]
   },
   work: {
-    categories: ["전체", "책상", "전원·케이블", "문구", "출퇴근", "비상"],
+    categories: ["전체", "책상", "전원·케이블", "출퇴근", "비상"],
     mapQuery: "文房具 家電量販店 通勤用品",
     items: [
       { id: "desk-mat", title: "데스크매트", base: "デスクマット 大型 マウス対応", category: "supplies", tag: "책상", minBudget: 1500, note: "마우스패드와 책상 보호를 겸합니다." },
@@ -469,10 +473,6 @@ const kitCollections = {
       { id: "usb-charger", title: "USB 충전기", base: "USB充電器 Type-C PD 65W", category: "appliance", tag: "전원·케이블", minBudget: 2500, note: "노트북/휴대폰을 같이 충전하려면 PD 65W 이상을 확인하세요." },
       { id: "cable-set", title: "충전 케이블 세트", base: "充電ケーブル Type-C Lightning セット", category: "appliance", tag: "전원·케이블", minBudget: 1200, note: "침대, 책상, 가방용으로 나눠 두면 분실 부담이 줄어듭니다." },
       { id: "lan-wifi", title: "LAN 케이블·공유기 주변", base: "LANケーブル Cat6 ルーター 収納", category: "appliance", tag: "전원·케이블", minBudget: 1000, note: "인터넷 개통 후 유선 연결이나 공유기 정리에 필요할 수 있습니다." },
-      { id: "stationery-set", title: "문구 기본 세트", base: "文房具 セット ノート ペン はさみ テープ", category: "supplies", tag: "문구", minBudget: 1200, note: "계약서, 택배, 간단한 조립 때 펜·가위·테이프가 바로 필요합니다." },
-      { id: "document-folder", title: "서류 파일·클리어파일", base: "クリアファイル 書類ケース A4", category: "supplies", tag: "문구", minBudget: 700, note: "입주 서류, 재류 관련 서류, 영수증을 분리해 두기 좋습니다." },
-      { id: "commute-bag", title: "출퇴근 가방", base: "通勤バッグ ビジネスリュック 軽量", category: "commute", tag: "출퇴근", minBudget: 4000, note: "노트북 수납 여부와 방수성을 확인하세요." },
-      { id: "umbrella", title: "접이식 우산", base: "折りたたみ傘 軽量 自動開閉", category: "commute", tag: "출퇴근", minBudget: 1500, note: "일본 장마와 돌발 비 대비용으로 가방에 넣어두기 좋습니다." },
       { id: "ic-case", title: "IC카드 케이스", base: "パスケース リール付き 定期入れ", category: "commute", tag: "출퇴근", minBudget: 1000, note: "Suica/PASMO 사용을 시작하면 바로 편해집니다." },
       { id: "emergency-pouch", title: "비상 파우치", base: "防災ポーチ 携帯トイレ モバイルバッテリー", category: "supplies", tag: "비상", minBudget: 2500, note: "보조배터리, 상비약, 휴대 화장지, 간단한 방재용품을 묶어 둡니다." }
     ]
