@@ -1019,6 +1019,17 @@ function renderPickTiers(node, thing) {
     tiersWrap.append(btn);
   });
 
+  // 사용 가능한 등급 상품 페이지를 한 번에 새 탭으로 열기(팝업 차단 시 이 사이트 팝업 허용 필요)
+  const openAll = document.createElement("button");
+  openAll.type = "button";
+  openAll.className = "pick-tier-open-all";
+  openAll.textContent = `↗ ${available.length}개 한번에 열기`;
+  openAll.title = "최저가·중간·프리미엄 상품 페이지를 새 탭으로 함께 엽니다";
+  openAll.addEventListener("click", () => {
+    available.forEach((tier) => window.open(picks[tier].url, "_blank", "noopener"));
+  });
+  tiersWrap.append(openAll);
+
   selectTier(picks.mid ? "mid" : available[0]);
 }
 

@@ -949,6 +949,31 @@ h2 {
   color: var(--warm);
 }
 
+.pick-tier-open-all {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 4px;
+  padding: 5px 10px;
+  border-radius: 7px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.pick-tier-open-all:hover {
+  background: var(--accent-ink);
+}
+
+.pick-tier-open-all:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
 .pick-tier-btn[data-tier="budget"].is-active {
   background: color-mix(in srgb, var(--accent) 18%, var(--panel-2));
   color: var(--accent-ink);
