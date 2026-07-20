@@ -25,17 +25,21 @@ const items = [
     priority: "첫 주", minBudget: 7000, mode: ["week1"],
     note: "업무용 책상과 겸용할지 먼저 정하면 중복 구매를 줄일 수 있습니다.",
     pick: { name: "카페테이블+체어 세트", price: 6880, rating: "4.51", reviews: "697", url: "https://item.rakuten.co.jp/kaitekilife117/z103/" } },
-  { id: "desk", title: "업무용 책상", base: "ワークデスク 幅120", category: "furniture",
+  { id: "desk", title: "업무용 책상", base: "ワークデスク 幅140 奥行60", category: "furniture",
     priority: "업무", minBudget: 10000, mode: ["work"],
-    note: "27인치 모니터를 둘 거면 폭 120cm, 깊이 60cm이 안정적입니다. 모니터암 대응 천판이면 나중에 확장이 쉽습니다.",
-    pick: { name: "산와다이렉트 데스크 폭120(라쿠텐 1위)", price: 10800, rating: "4.64", reviews: "868", url: "https://item.rakuten.co.jp/sanwadirect/100-deskf004/" } },
-  { id: "chair", title: "업무용 의자", base: "オフィスチェア 在宅ワーク", category: "furniture",
-    priority: "업무", minBudget: 4500, mode: ["work"],
-    note: "재택이면 의자를 먼저 투자하세요. 이토키·오카무라 같은 일본 오피스가구 브랜드의 보급 라인이 장시간 착석에 안정적입니다.",
-    pick: { name: "이토키 메쉬 체어 미들백·팔걸이(직영몰)", price: 19900, rating: "4.58", reviews: "174", url: "https://item.rakuten.co.jp/soho-st/24088739s/" } },
+    note: "모니터 2대는 지금, 최종 3대 로드맵이면 폭140cm↑·깊이60cm가 안정적입니다. 32인치 2매 또는 24인치급 3매까지 대응. 모니터암 대응 천판이면 확장이 쉽습니다. 동일 사양이면 라쿠텐/IKEA(예: IKEA 상판 140cm) 중 저가로 고르세요.",
+    pick: { name: "산와다이렉트 심플워크데스크 폭140×깊이60(라쿠텐 1위)", price: 11230, rating: "4.66", reviews: "389", url: "https://item.rakuten.co.jp/sanwadirect/100-deskf005/" } },
+  { id: "chair", title: "업무용 의자", base: "ゲーミングチェア ファブリック オフィスチェア", category: "furniture",
+    priority: "업무", minBudget: 12000, mode: ["work"],
+    note: "장시간 착석엔 푹신한 쿠션형(포켓코일 좌면)이 편합니다. 메시보다 한국 PC의자 스타일. 오토만·리클라이닝이 있으면 휴식에 좋습니다. 방 폭과 냄새/조립을 리뷰에서 확인하세요.",
+    pick: { name: "Dowinx 패브릭 게이밍체어(포켓코일·오토만, 1년보증)", price: 14280, rating: "4.37", reviews: "493", url: "https://item.rakuten.co.jp/rt-dowinx/6658/" } },
+  { id: "applianceset", title: "리유스 가전 3점 세트(중고)", base: "中古家電セット 3点 冷蔵庫 洗濯機 電子レンジ", category: "appliance",
+    priority: "첫 주", minBudget: 34000, mode: ["week1"],
+    note: "혼자 자취 가전은 중고 리유스 3점 세트(냉장고+세탁기+전자레인지)가 가장 저렴합니다. 도쿄권(하치오지 포함) 배송·설치 무료, 보증(3개월~2년) 있는 매장 기준 3점 ¥34,000~40,000(배송·설치 포함). ★추천은 트레팩(배송·설치 무료, 리뷰 758). 배송에 며칠~1주 걸리니 7/28 입주 전 도착시키려면 이번 주(~7/21경) 주문 권장. 밥솥/전기포트/청소기까지 포함되는 4~6점 세트도 있습니다. 신뢰 매장: トレファク(트레팩), 楽天 パワーセラー(국산 고년식), リユース家電Happy, いいね家電, ヤ마다 아웃렛.",
+    pick: { name: "트레팩 중고 가전3점 세트(냉장고+세탁기+레인지, 배송·설치 무료)", price: 39800, rating: "4.41", reviews: "758", url: "https://item.rakuten.co.jp/trefac-f/999005/" } },
   { id: "washer", title: "세탁기", base: "洗濯機 一人暮らし 5kg 設置", category: "appliance",
     priority: "첫 주", minBudget: 26000, mode: ["week1"],
-    note: "배송/설치/수거 비용을 같이 확인해야 실제 총액이 맞습니다.",
+    note: "배송/설치/수거 비용을 같이 확인해야 실제 총액이 맞습니다. 중고 리유스 세트(냉장고+세탁기+전자레인지)로 한 번에 해결하는 게 가장 저렴합니다 — '리유스 가전 3점 세트' 품목을 먼저 보세요. 세트가 일정·재고가 안 맞을 때 아래 신품이 대안입니다.",
     pick: { name: "아이리스오야마 세탁기 6kg IAW-T604", price: 29800, rating: "4.37", reviews: "1,720", url: "https://item.rakuten.co.jp/enetroom/573828/" } },
   { id: "cookware", title: "냄비/프라이팬", base: "鍋 フライパン セット IH対応", category: "kitchen",
     priority: "당일", minBudget: 3500, mode: ["day1"],
@@ -59,19 +63,19 @@ const items = [
     pick: { name: "릴 부착 패스케이스(anan 게재)", price: 1280, rating: "4.56", reviews: "3,153", url: "https://item.rakuten.co.jp/rareleak/fo-idcase-rbn-in/" } },
   { id: "fridge", title: "냉장고", base: "冷蔵庫 一人暮らし 170L", category: "appliance",
     priority: "첫 주", minBudget: 28000, mode: ["week1"],
-    note: "자취 요리엔 150L보다 170L 전후가 여유 있습니다. 신품 170L은 ¥28,000~. 배송·설치·기존 처분 비용을 함께 확인하세요.",
+    note: "자취 요리엔 150L보다 170L 전후가 여유 있습니다. 신품 170L은 ¥28,000~. 배송·설치·기존 처분 비용을 함께 확인하세요. 세트(리유스)로 세탁기·전자레인지와 함께 구매하는 게 저렴합니다 — '리유스 가전 3점 세트' 참조. 신품 단품은 대안.",
     pick: { name: "아이리스오야마 냉장고 170L 2도어", price: 32800, rating: "4.02", reviews: "260", url: "https://item.rakuten.co.jp/enetroom/573739/" } },
   { id: "microwave", title: "전자레인지", base: "電子レンジ 一人暮らし", category: "appliance",
     priority: "첫 주", minBudget: 8000, mode: ["week1"],
-    note: "동일본(50Hz)/서일본(60Hz) 겸용인지 확인하면 재이사에도 안전합니다.",
+    note: "동일본(50Hz)/서일본(60Hz) 겸용인지 확인하면 재이사에도 안전합니다. 리유스 3점 세트에 대개 포함됩니다 — 세트 품목 우선. 단품 신품은 대안.",
     pick: { name: "아이리스오야마 전자레인지 17L", price: 8980, rating: "4.36", reviews: "2,376", url: "https://item.rakuten.co.jp/kadenrand/560082/" } },
   { id: "ricecooker", title: "밥솥", base: "炊飯器 3合", category: "appliance",
     priority: "첫 주", minBudget: 6000, mode: ["week1"],
-    note: "1인 가구는 3합이면 충분합니다.",
+    note: "1인 가구는 3합이면 충분합니다. 4점 이상 세트에 포함되면 스킵하세요. 없으면 단품 3~5.5합.",
     pick: { name: "타이거 마이콘 밥솥 5.5합 JBH-G101W", price: 8980, rating: "4.63", reviews: "978", url: "https://item.rakuten.co.jp/rcmdki/t2-4904710418932/" } },
   { id: "kettle", title: "전기포트", base: "電気ケトル", category: "appliance",
     priority: "당일", minBudget: 2000, mode: ["day1"],
-    note: "라면·차·커피에 바로 필요합니다. 도착 당일 우선.",
+    note: "라면·차·커피에 바로 필요합니다. 도착 당일 우선. 세트에 포함되기도 합니다. 없으면 단품(도착 당일 필요).",
     pick: { name: "Latuna 유리 전기케틀 1L", price: 3490, rating: "4.39", reviews: "3,306", url: "https://item.rakuten.co.jp/latuna/10000015/" } },
   { id: "vacuum", title: "청소기", base: "掃除機 スティック 軽量", category: "appliance",
     priority: "첫 주", minBudget: 6000, mode: ["week1"],
@@ -110,10 +114,6 @@ const items = [
     priority: "당일", minBudget: 4500, mode: ["day1"],
     note: "빌트인 콘로가 없는 방이 많습니다. 입주 전 확인하고, 없으면 탁상 IH나 카세트콘로부터 시작하세요.",
     pick: { name: "탁상 IH 쿠킹히터 1400W", price: 5480, rating: "4.48", reviews: "1,536", url: "https://item.rakuten.co.jp/e-kurashi/qt604/" } },
-  { id: "router", title: "Wi-Fi 공유기", base: "Wi-Fiルーター 一人暮らし", category: "appliance",
-    priority: "첫 주", minBudget: 5000, mode: ["week1", "work"],
-    note: "회선 개통 일정을 먼저 확인하세요. 개통 전에는 스마트폰 테더링으로 버틸 수 있습니다.",
-    pick: { name: "BUFFALO Wi-Fi6 공유기(3년보증)", price: 6800, rating: "4.62", reviews: "3,661", url: "https://item.rakuten.co.jp/justrich/1246-001780/" } },
   { id: "transformer", title: "변압기(한국 가전용)", base: "変圧器 アップトランス 100V 220V", category: "appliance",
     priority: "당일", minBudget: 5000, mode: ["day1"],
     note: "일본은 100V입니다. 한국에서 가져온 220V 전용 가전을 쓸 때만 필요합니다. 프리볼트(100-240V)면 불필요. 변압기는 사용 가전 소비전력(W) 합계보다 여유 있는 용량을 고르세요.",
@@ -122,10 +122,6 @@ const items = [
     priority: "출퇴근", minBudget: 3000, mode: ["commute", "work"],
     note: "출근 셔츠 관리용. 걸어둔 채 쓰는 의류 스티머가 자취방에서 관리가 편합니다.",
     pick: { name: "±0 의류스티머 XRS-D010", price: 9900, rating: "4.46", reviews: "9,699", url: "https://item.rakuten.co.jp/roomy/pmz19jun27b01/" } },
-  { id: "hanko", title: "인감도장(はんこ)", base: "印鑑 認印 銀行印", category: "supplies",
-    priority: "첫 주", minBudget: 1000, mode: ["week1"],
-    note: "은행 계좌·계약에 필요한 경우가 있습니다. 돈키호테나 はんこ집에서 당일 제작도 가능합니다.",
-    pick: { name: "인감·은행인 세트 흑수우(케이스 포함)", price: 1000, rating: "4.6", reviews: "4.7만", url: "https://item.rakuten.co.jp/hankoya-shop/k-jituin/" } },
   { id: "mosquito", title: "모기·방충 대책", base: "蚊がいなくなるスプレー 虫除け", category: "supplies",
     priority: "당일", minBudget: 1000, mode: ["day1"],
     note: "7월 말 입주 당일부터 필요합니다. 킨초 스프레이가 표준이고, 방충망 상태도 입주 시 확인하세요.",
@@ -134,10 +130,40 @@ const items = [
     priority: "당일", minBudget: 1000, mode: ["day1"],
     note: "일본 여름 자취 필수. 가구를 들이기 전에 설치하는 게 가장 효과적입니다. 블랙캡이 표준.",
     pick: { name: "ブラックキャップ 12個入(공식 표준)", price: 1870, rating: "4.59", reviews: "229", url: "https://item.rakuten.co.jp/rakuten24/a003200200072/" } },
-  { id: "dehumid", title: "제습·곰팡이 대책", base: "除湿剤 湿気取り クローゼット", category: "supplies",
-    priority: "첫 주", minBudget: 800, mode: ["week1"],
-    note: "옷장·신발장 습기 관리. 일회용 제습제로 시작하고, 반영구는 숯 타입(炭八)이 유명합니다.",
-    pick: { name: "炭八 제습·탈취 세트(반영구)", price: 1780, rating: "4.73", reviews: "4,614", url: "https://item.rakuten.co.jp/ienolabo/ielabo100962/" } },
+  { id: "showercurtain", title: "샤워커튼", base: "シャワーカーテン 防カビ リング付き", category: "supplies",
+    priority: "첫 주", minBudget: 1200, mode: ["week1"],
+    note: "유닛배스(욕조+변기 일체형)면 물튐 방지에 필수. 방곰팡이 타입 + 링 세트로. 창문형 분리 욕실이면 불필요." },
+  { id: "towels", title: "수건 세트", base: "タオルセット バスタオル フェイスタオル 今治", category: "supplies",
+    priority: "당일", minBudget: 2000, mode: ["day1"],
+    note: "도착 당일 샤워에 필요. 페이스+배스 조합 세트가 편합니다. 今治·泉州 타올이 품질 정평." },
+  { id: "bathmat", title: "욕실 발매트", base: "バスマット 速乾 吸水", category: "supplies",
+    priority: "첫 주", minBudget: 1000, mode: ["week1"],
+    note: "규조토(빠른 건조) 또는 흡수 매트. 습기·곰팡이 관리에 유리합니다." },
+  { id: "toiletries", title: "세면·목욕 기본", base: "シャンプー ボディソープ 歯ブラシ 洗顔", category: "supplies",
+    priority: "당일", minBudget: 2000, mode: ["day1"],
+    note: "샴푸·바디워시·칫솔·치약·세안. 도착 당일 필요. 드럭스토어(웰시아·크리에이트)나 다이소로 현지 조달도 편합니다." },
+  { id: "containers", title: "밀폐 보관용기", base: "保存容器 密閉 セット 電子レンジ対応", category: "kitchen",
+    priority: "첫 주", minBudget: 1500, mode: ["week1"],
+    note: "작은 냉장고 활용·남은 음식 보관. 전자레인지/식기세척 대응이면 편합니다. 다이소로 시작 가능." },
+  { id: "water", title: "식수(정수포트/생수)", base: "浄水ポット ブリタ 交換カートリッジ", category: "kitchen",
+    priority: "당일", minBudget: 1500, mode: ["day1"],
+    note: "일본 수돗물은 음용 가능하나, 정수 필터포트(BRITA)나 2L 생수 상비 중 택1. 라면·커피·차용." },
+  { id: "dryrack", title: "실내 빨래건조대", base: "室内物干し 折りたたみ スタンド", category: "supplies",
+    priority: "첫 주", minBudget: 2000, mode: ["week1"],
+    note: "장마·게릴라 호우·1인 자취 필수. 접이식 스탠드형이 공간 효율이 좋고, 서큘레이터와 함께 쓰면 빨리 마릅니다." },
+  { id: "coolpad", title: "냉감 패드", base: "接触冷感 敷きパッド ひんやり", category: "supplies",
+    sizes: ["シングル", "セミダブル", "ダブル", "クイーン"], defaultSize: "クイーン",
+    priority: "당일", minBudget: 2000, mode: ["day1"],
+    note: "7월말 입주 직결. 저반발 매트리스 위에 깔면 여름 열감이 완화됩니다. 세탁 가능 타입으로, 매트리스 사이즈(퀸)에 맞추세요." },
+  { id: "disaster", title: "방재 기본세트", base: "防災セット 懐中電灯 モバイルバッテリー 保存水", category: "supplies",
+    priority: "첫 주", minBudget: 3000, mode: ["week1"],
+    note: "도쿄는 지진 대비 기본. 손전등·대용량 보조배터리·비축수(3일분)·간이 비상식. 가구 전도방지 품목과 함께 준비하세요." },
+  { id: "powerstrip", title: "전원탭·연장코드", base: "電源タップ 雷ガード 個別スイッチ USB", category: "appliance",
+    priority: "업무", minBudget: 1500, mode: ["work", "day1"],
+    note: "모니터 2~3대+PC+주변기기엔 개별 스위치·낙뢰가드 탭이 필수. 책상 배치에 맞춰 길이를 고르세요." },
+  { id: "firstaid", title: "구급상자·상비약", base: "救急箱 常備薬 絆創膏 体温計", category: "supplies",
+    priority: "첫 주", minBudget: 1500, mode: ["week1"],
+    note: "첫 자취 상비: 반창고·소독·해열진통·위장약·체온계. 드럭스토어 현지 조달도 가능합니다." },
   { id: "antitip", title: "가구 전도방지(지진 대비)", base: "家具転倒防止 突っ張り棒", category: "supplies",
     priority: "첫 주", minBudget: 1500, mode: ["week1"],
     note: "키 큰 선반·수납장 설치와 동시에 고정하세요. 천장 돌출봉 타입이 임대에도 안전합니다.",
@@ -974,7 +1000,7 @@ function buildItemCard(item) {
 
   const primaryLink = node.querySelector(".item-primary-link");
   const primaryShop = primaryShopFor(item);
-  if (primaryShop) {
+  if (primaryShop && !item.pick) {
     primaryLink.href = searchUrl(primaryShop, item);
     primaryLink.textContent = `${primaryShop.name} 검색`;
     primaryLink.classList.remove("hidden");
@@ -1045,7 +1071,7 @@ function refreshItemCard(node, item) {
   node.querySelector(".item-keyword").textContent = `검색어: ${keywordFor(item)}`;
   const primaryShop = primaryShopFor(item);
   const primaryLink = node.querySelector(".item-primary-link");
-  if (primaryShop) {
+  if (primaryShop && !item.pick) {
     primaryLink.href = searchUrl(primaryShop, item);
     primaryLink.textContent = `${primaryShop.name} 검색`;
     primaryLink.classList.remove("hidden");
@@ -1080,7 +1106,7 @@ function buildKitCard(kit) {
 
   const primaryLink = node.querySelector(".item-primary-link");
   const primaryShop = primaryShopFor(kit);
-  if (primaryShop) {
+  if (primaryShop && !kit.pick) {
     primaryLink.href = searchUrl(primaryShop, kit);
     primaryLink.textContent = `${primaryShop.name} 검색`;
     primaryLink.classList.remove("hidden");
