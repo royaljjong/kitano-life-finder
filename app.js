@@ -1017,7 +1017,15 @@ function renderPickTiers(node, thing) {
   openAll.textContent = `↗ ${available.length}개 한번에 열기`;
   openAll.title = "최저가·중간·프리미엄 상품 페이지를 새 탭으로 함께 엽니다";
   openAll.addEventListener("click", () => {
-    available.forEach((tier) => window.open(picks[tier].url, "_blank", "noopener"));
+    available.forEach((tier) => {
+      const a = document.createElement("a");
+      a.href = picks[tier].url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    });
   });
   tiersWrap.append(openAll);
 
