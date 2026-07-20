@@ -905,6 +905,69 @@ h2 {
   display: none;
 }
 
+.pick-tiers {
+  flex: 0 0 auto;
+  display: inline-flex;
+  gap: 4px;
+  padding: 3px;
+  border-radius: 10px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+}
+
+.pick-tiers.hidden {
+  display: none;
+}
+
+.pick-tier-btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  border: none;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.pick-tier-btn:hover {
+  color: var(--ink);
+}
+
+.pick-tier-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+.pick-tier-btn.is-active {
+  background: var(--warm-soft);
+  color: var(--warm);
+}
+
+.pick-tier-btn[data-tier="budget"].is-active {
+  background: color-mix(in srgb, var(--accent) 18%, var(--panel-2));
+  color: var(--accent-ink);
+}
+
+.pick-tier-btn[data-tier="premium"].is-active {
+  background: color-mix(in srgb, var(--warm) 26%, var(--panel-2));
+  color: var(--warm);
+}
+
+.set-component-label {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
 .item-primary-link {
   flex: 0 0 auto;
   display: inline-flex;
@@ -1588,6 +1651,7 @@ h2 {
   .item-row-main .size-select,
   .item-row-main .item-price,
   .item-row-main .item-pick-btn,
+  .item-row-main .pick-tiers,
   .item-row-main .item-primary-link {
     order: 3;
   }
@@ -1604,6 +1668,10 @@ h2 {
   .store-show-btn,
   .item-pick-btn,
   .item-primary-link {
+    min-height: 40px;
+  }
+
+  .pick-tier-btn {
     min-height: 40px;
   }
 

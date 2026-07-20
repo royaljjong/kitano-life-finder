@@ -10,17 +10,26 @@ const items = [
   { id: "mattress", title: "매트리스", base: "マットレス 低反発", category: "furniture",
     sizes: ["シングル", "セミダブル", "ダブル", "クイーン"], defaultSize: "クイーン",
     priority: "당일", minBudget: 13000, mode: ["day1"],
-    note: "푹신한 저반발(低反発) 기준. 퀸은 압축·롤 배송이면 반입이 쉽습니다. 저반발은 여름에 다소 더울 수 있어 냉감 패드(침구 세트 참고)를 위에 깔면 좋습니다. 추천 상품 페이지에서 クイーン(퀸)을 선택하세요.",
-    pick: { name: "저반발 매트리스 8cm やわらか 90N(퀸 ¥13,420)", price: 13420, rating: "4.28", reviews: "3.8만", url: "https://item.rakuten.co.jp/maxshare/a05750_sale/" } },
+    note: "푹신한 저반발(低反発) 기준. 퀸은 압축·롤 배송이면 반입이 쉽습니다. 저반발은 여름에 다소 더울 수 있어 냉감 패드(침구 세트 참고)를 위에 깔면 좋습니다. 추천 상품 페이지에서 クイーン(퀸)을 선택하세요. 3단 모두 퀸 선택 시 표시가와 다를 수 있으니 사이즈·가격을 상품페이지에서 확인하세요.",
+    picks: {
+      budget: { name: "저반발 매트리스 8cm(가성비, 퀸 선택)", price: 6999, rating: "4.33", reviews: "6,462", url: "https://item.rakuten.co.jp/tansu/13810004/" },
+      mid: { name: "저반발 매트리스 8cm やわらか 90N(퀸)", price: 13420, rating: "4.28", reviews: "3.8만", url: "https://item.rakuten.co.jp/maxshare/a05750_sale/" },
+      premium: { name: "트루슬리퍼 프레미어리치(저반발 정평)", price: 39800, rating: "4.42", reviews: "1,332", url: "https://item.rakuten.co.jp/shopjapan/trpr-hnss/" } } },
   { id: "bed", title: "침대 프레임 또는 DIY 받침", base: "ベッドフレーム すのこ", category: "furniture",
     sizes: ["シングル", "セミダブル", "ダブル", "クイーン"], defaultSize: "クイーン",
     priority: "첫 주", minBudget: 8000, mode: ["week1"],
     note: "당장은 매트리스만 쓰고, 첫 주에 스노코나 프레임을 붙이는 방식이 비용 부담이 낮습니다.",
-    pick: { name: "스노코 침대(높이조절, DONDON)", price: 7498, rating: "4.29", reviews: "6,097", url: "https://item.rakuten.co.jp/dondon/ysb-001-s/" } },
+    picks: {
+      budget: { name: "파이프 침대(접이식, 가성비)", price: 5980, rating: "4.53", reviews: "1,202", url: "https://item.rakuten.co.jp/marketjapan/10001136/" },
+      mid: { name: "북유럽 파인 스노코침대(높이 3단조절)", price: 9999, rating: "4.35", reviews: "2,120", url: "https://item.rakuten.co.jp/tansu/11719094aa/" },
+      premium: { name: "키리(오동)材 스노코침대(일본산 고품질)", price: 66000, rating: "4.64", reviews: "898", url: "https://item.rakuten.co.jp/kagunosato/58-0044/" } } },
   { id: "sofa", title: "소파", base: "ソファ 一人暮らし コンパクト", category: "furniture",
     priority: "낮음", minBudget: 8000, mode: ["week1"],
     note: "1~2인용 콤팩트 소파. 방 폭과 반입 경로(문·엘리베이터)를 먼저 확인하세요.",
-    pick: { name: "和楽 콤팩트 2인 소파(일본제)", price: 19900, rating: "4.43", reviews: "7,457", url: "https://item.rakuten.co.jp/takamine/a01_pvc/" } },
+    picks: {
+      budget: { name: "북유럽 로소파 1인용(가성비)", price: 9999, rating: "4.22", reviews: "1,527", url: "https://item.rakuten.co.jp/kaguin/7069418/" },
+      mid: { name: "和楽 콤팩트 2인 소파(일본제)", price: 19900, rating: "4.43", reviews: "7,457", url: "https://item.rakuten.co.jp/takamine/a01_pvc/" },
+      premium: { name: "和楽 step 빈티지 소파", price: 24990, rating: "4.44", reviews: "3,278", url: "https://item.rakuten.co.jp/takamine/step/" } } },
   { id: "dining", title: "식사용 책상 및 의자", base: "ダイニングテーブル 2人用 椅子", category: "furniture",
     priority: "첫 주", minBudget: 7000, mode: ["week1"],
     note: "업무용 책상과 겸용할지 먼저 정하면 중복 구매를 줄일 수 있습니다.",
@@ -28,19 +37,31 @@ const items = [
   { id: "desk", title: "업무용 책상", base: "ワークデスク 幅140 奥行60", category: "furniture",
     priority: "업무", minBudget: 10000, mode: ["work"],
     note: "모니터 2대는 지금, 최종 3대 로드맵이면 폭140cm↑·깊이60cm가 안정적입니다. 32인치 2매 또는 24인치급 3매까지 대응. 모니터암 대응 천판이면 확장이 쉽습니다. 동일 사양이면 라쿠텐/IKEA(예: IKEA 상판 140cm) 중 저가로 고르세요.",
-    pick: { name: "산와다이렉트 심플워크데스크 폭140×깊이60(라쿠텐 1위)", price: 11230, rating: "4.66", reviews: "389", url: "https://item.rakuten.co.jp/sanwadirect/100-deskf005/" } },
+    picks: {
+      budget: { name: "L자 코너데스크 폭140(가성비)", price: 9990, rating: "4.09", reviews: "212", url: "https://item.rakuten.co.jp/grazia-doris/fico/" },
+      mid: { name: "산와다이렉트 심플워크데스크 폭140×60(라쿠텐 1위)", price: 11230, rating: "4.66", reviews: "389", url: "https://item.rakuten.co.jp/sanwadirect/100-deskf005/" },
+      premium: { name: "산와다이렉트 폭160×60(3모니터 여유)", price: 13030, rating: "4.67", reviews: "244", url: "https://item.rakuten.co.jp/sanwadirect/100-deskf006/" } } },
   { id: "chair", title: "업무용 의자", base: "ゲーミングチェア ファブリック オフィスチェア", category: "furniture",
     priority: "업무", minBudget: 12000, mode: ["work"],
     note: "장시간 착석엔 푹신한 쿠션형(포켓코일 좌면)이 편합니다. 메시보다 한국 PC의자 스타일. 오토만·리클라이닝이 있으면 휴식에 좋습니다. 방 폭과 냄새/조립을 리뷰에서 확인하세요.",
-    pick: { name: "Dowinx 패브릭 게이밍체어(포켓코일·오토만, 1년보증)", price: 14280, rating: "4.37", reviews: "493", url: "https://item.rakuten.co.jp/rt-dowinx/6658/" } },
+    picks: {
+      budget: { name: "GTPLAYER GT002 게이밍체어(쿠션·리뷰 최다)", price: 12999, rating: "4.58", reviews: "1,764", url: "https://item.rakuten.co.jp/gtplayershop/gt002/" },
+      mid: { name: "Dowinx 패브릭 게이밍체어(포켓코일·오토만)", price: 14280, rating: "4.37", reviews: "493", url: "https://item.rakuten.co.jp/rt-dowinx/6658/" },
+      premium: { name: "AKRacing Nitro V2(정평 게이밍체어)", price: 48239, rating: "4.50", reviews: "24", url: "https://item.rakuten.co.jp/office-com/tw-akr-nitro/" } } },
   { id: "applianceset", title: "리유스 가전 3점 세트(중고)", base: "中古家電セット 3点 冷蔵庫 洗濯機 電子レンジ", category: "appliance",
     priority: "첫 주", minBudget: 34000, mode: ["week1"], setItems: ["fridge", "washer", "microwave"],
     note: "혼자 자취 가전은 중고 리유스 3점 세트(냉장고+세탁기+전자레인지)가 가장 저렴합니다. 도쿄권(하치오지 포함) 배송·설치 무료, 보증(3개월~2년) 있는 매장 기준 3점 ¥34,000~40,000(배송·설치 포함). ★추천은 트레팩(배송·설치 무료, 리뷰 758). 배송에 며칠~1주 걸리니 7/28 입주 전 도착시키려면 이번 주(~7/21경) 주문 권장. 밥솥/전기포트/청소기까지 포함되는 4~6점 세트도 있습니다. 신뢰 매장: トレファク(트레팩), 楽天 パワーセラー(국산 고년식), リユース家電Happy, いいね家電, ヤ마다 아웃렛.",
-    pick: { name: "트레팩 중고 가전3점 세트(냉장고+세탁기+레인지, 배송·설치 무료)", price: 39800, rating: "4.41", reviews: "758", url: "https://item.rakuten.co.jp/trefac-f/999005/" } },
+    picks: {
+      budget: { name: "파워세라 중고 가전3점(해외메이커 18~20년, 설치무료)", price: 34000, rating: "4.43", reviews: "215", url: "https://item.rakuten.co.jp/auc-powerseller/10000737/" },
+      mid: { name: "트레팩 중고 가전3점(배송·설치 무료, 리뷰 최다)", price: 39800, rating: "4.41", reviews: "758", url: "https://item.rakuten.co.jp/trefac-f/999005/" },
+      premium: { name: "파워세라 중고 가전3점(국산 21~23년 고년식)", price: 44000, rating: "4.40", reviews: "671", url: "https://item.rakuten.co.jp/auc-powerseller/10000739/" } } },
   { id: "washer", title: "세탁기", base: "洗濯機 一人暮らし 5kg 設置", category: "appliance",
     priority: "첫 주", minBudget: 26000, mode: ["week1"], inSet: "applianceset",
     note: "배송/설치/수거 비용을 같이 확인해야 실제 총액이 맞습니다. 중고 리유스 세트(냉장고+세탁기+전자레인지)로 한 번에 해결하는 게 가장 저렴합니다 — '리유스 가전 3점 세트' 품목을 먼저 보세요. 세트가 일정·재고가 안 맞을 때 아래 신품이 대안입니다.",
-    pick: { name: "아이리스오야마 세탁기 6kg IAW-T604", price: 29800, rating: "4.37", reviews: "1,720", url: "https://item.rakuten.co.jp/enetroom/573828/" } },
+    picks: {
+      budget: { name: "아이리스오야마 4.5kg IAW-T45", price: 19800, rating: "4.33", reviews: "447", url: "https://item.rakuten.co.jp/enetroom/572874/" },
+      mid: { name: "아이리스오야마 6kg IAW-T60", price: 27780, rating: "4.37", reviews: "1,722", url: "https://item.rakuten.co.jp/enetroom/573828/" },
+      premium: { name: "파나소닉 5kg NA-F5B5(정평 브랜드)", price: 37610, rating: "4.5", reviews: "8", url: "https://item.rakuten.co.jp/jism/4550719034934-21-484-n/" } } },
   { id: "cookware", title: "냄비/프라이팬", base: "鍋 フライパン セット IH対応", category: "kitchen",
     priority: "당일", minBudget: 3500, mode: ["day1"],
     note: "집의 가열 방식이 IH인지 가스인지 확인하고 구매하세요.",
@@ -63,28 +84,45 @@ const items = [
     pick: { name: "릴 부착 패스케이스(anan 게재)", price: 1280, rating: "4.56", reviews: "3,153", url: "https://item.rakuten.co.jp/rareleak/fo-idcase-rbn-in/" } },
   { id: "fridge", title: "냉장고", base: "冷蔵庫 一人暮らし 170L", category: "appliance",
     priority: "첫 주", minBudget: 28000, mode: ["week1"], inSet: "applianceset",
-    note: "자취 요리엔 150L보다 170L 전후가 여유 있습니다. 신품 170L은 ¥28,000~. 배송·설치·기존 처분 비용을 함께 확인하세요. 세트(리유스)로 세탁기·전자레인지와 함께 구매하는 게 저렴합니다 — '리유스 가전 3점 세트' 참조. 신품 단품은 대안.",
-    pick: { name: "아이리스오야마 냉장고 170L 2도어", price: 32800, rating: "4.02", reviews: "260", url: "https://item.rakuten.co.jp/enetroom/573739/" } },
+    note: "자취 요리엔 150L보다 170L 전후가 여유 있습니다. 신품 170L은 ¥28,000~. 배송·설치·기존 처분 비용을 함께 확인하세요. 세트(리유스)로 세탁기·전자레인지와 함께 구매하는 게 저렴합니다 — '리유스 가전 3점 세트' 참조. 신품 단품은 대안. 프리미엄 신품은 파나소닉·샤프·AQUA 150~170L(정평, 요도바시·빅카메라 병행 확인).",
+    picks: {
+      budget: { name: "MAXZEN 168L 2도어(가성비)", price: 28480, rating: "4.32", reviews: "37", url: "https://item.rakuten.co.jp/a-price/4571495432318/" },
+      mid: { name: "아이리스오야마 大凍量 153L IRSN-HF15", price: 44800, rating: "4.62", reviews: "37", url: "https://item.rakuten.co.jp/unidy/568921/" } } },
   { id: "microwave", title: "전자레인지", base: "電子レンジ 一人暮らし", category: "appliance",
     priority: "첫 주", minBudget: 8000, mode: ["week1"], inSet: "applianceset",
     note: "동일본(50Hz)/서일본(60Hz) 겸용인지 확인하면 재이사에도 안전합니다. 리유스 3점 세트에 대개 포함됩니다 — 세트 품목 우선. 단품 신품은 대안.",
-    pick: { name: "아이리스오야마 전자레인지 17L", price: 8980, rating: "4.36", reviews: "2,376", url: "https://item.rakuten.co.jp/kadenrand/560082/" } },
+    picks: {
+      budget: { name: "아이리스오야마 단기능 17L", price: 7980, rating: "4.36", reviews: "2,381", url: "https://item.rakuten.co.jp/kadenrand/560082/" },
+      mid: { name: "아이리스오야마 플랫 18L 단기능", price: 9999, rating: "4.33", reviews: "644", url: "https://item.rakuten.co.jp/kadenrand/560668/" },
+      premium: { name: "BALMUDA The Range K09A(정평)", price: 59400, rating: "4.62", reviews: "814", url: "https://item.rakuten.co.jp/plywood/14949014/" } } },
   { id: "ricecooker", title: "밥솥", base: "炊飯器 3合", category: "appliance",
     priority: "첫 주", minBudget: 6000, mode: ["week1"],
     note: "1인 가구는 3합이면 충분합니다. 4점 이상 세트에 포함되면 스킵하세요. 없으면 단품 3~5.5합.",
-    pick: { name: "타이거 마이콘 밥솥 5.5합 JBH-G101W", price: 8980, rating: "4.63", reviews: "978", url: "https://item.rakuten.co.jp/rcmdki/t2-4904710418932/" } },
+    picks: {
+      budget: { name: "마이컴 밥솥 3合(가성비)", price: 5880, rating: "4.25", reviews: "618", url: "https://item.rakuten.co.jp/enetroom/561827/" },
+      mid: { name: "타이거 마이컴 5.5合 JBH-G101W(정평)", price: 8780, rating: "4.63", reviews: "980", url: "https://item.rakuten.co.jp/rcmdki/t2-4904710418932/" },
+      premium: { name: "아이리스오야마 압력IH 5.5合", price: 16800, rating: "4.37", reviews: "1,311", url: "https://item.rakuten.co.jp/enetroom/562099/" } } },
   { id: "kettle", title: "전기포트", base: "電気ケトル", category: "appliance",
     priority: "당일", minBudget: 2000, mode: ["day1"],
     note: "라면·차·커피에 바로 필요합니다. 도착 당일 우선. 세트에 포함되기도 합니다. 없으면 단품(도착 당일 필요).",
-    pick: { name: "Latuna 유리 전기케틀 1L", price: 3490, rating: "4.39", reviews: "3,306", url: "https://item.rakuten.co.jp/latuna/10000015/" } },
+    picks: {
+      budget: { name: "전기케틀 1L(가성비)", price: 1680, rating: "4.30", reviews: "1,646", url: "https://item.rakuten.co.jp/enetroom/7030579/" },
+      mid: { name: "T-fal 저스틴 락 1.2L KO5901JP(정평)", price: 3900, rating: "4.56", reviews: "704", url: "https://item.rakuten.co.jp/bellevie-harima/t-fal-350/" },
+      premium: { name: "BALMUDA The Pot KPT03JP(정평)", price: 14960, rating: "4.76", reviews: "2,069", url: "https://item.rakuten.co.jp/plywood/14949004/" } } },
   { id: "vacuum", title: "청소기", base: "掃除機 スティック 軽量", category: "appliance",
     priority: "첫 주", minBudget: 6000, mode: ["week1"],
     note: "좁은 자취방은 가벼운 스틱형이 관리하기 편합니다.",
-    pick: { name: "Orage C33 무선 스틱청소기", price: 7980, rating: "4.33", reviews: "6,543", url: "https://item.rakuten.co.jp/nanobig/cleaner_cordless_c33/" } },
+    picks: {
+      budget: { name: "무선 스틱청소기 22000pa(가성비)", price: 6500, rating: "4.23", reviews: "4,262", url: "https://item.rakuten.co.jp/kukuya/xqc08-1/" },
+      mid: { name: "무선 청소기 95000Pa 3단(가벼움)", price: 11980, rating: "4.61", reviews: "4,203", url: "https://item.rakuten.co.jp/nene777/compass1747365900/" },
+      premium: { name: "마키타 충전식 클리너 CL100DW(정평)", price: 13975, rating: "4.66", reviews: "4,097", url: "https://item.rakuten.co.jp/yamamura/cl100d/" } } },
   { id: "curtain", title: "커튼", base: "遮光カーテン 4枚セット", category: "supplies",
     priority: "당일", minBudget: 3700, mode: ["day1"],
     note: "프라이버시·햇빛 차단 때문에 첫날 밤 전에 필요합니다. 창 크기를 재고 사세요.",
-    pick: { name: "満天 1급차광 커튼 4장(레이스 포함)", price: 8980, rating: "4.41", reviews: "3,941", url: "https://item.rakuten.co.jp/manten-curtain/s4p_syak_00/" } },
+    picks: {
+      budget: { name: "1급 차광커튼 4장(가성비)", price: 1980, rating: "4.64", reviews: "3,350", url: "https://item.rakuten.co.jp/design-life/youaica/" },
+      mid: { name: "満天 1급차광 커튼 4장(레이스 포함)", price: 8980, rating: "4.41", reviews: "3,943", url: "https://item.rakuten.co.jp/manten-curtain/s4p_syak_00/" },
+      premium: { name: "満天 완전차광 커튼 4장", price: 10980, rating: "4.34", reviews: "10,853", url: "https://item.rakuten.co.jp/manten-curtain/s4p-bou/" } } },
   { id: "bedding", title: "침구 세트(이불·베개·시트)", base: "掛け布団 敷きパッド 枕 シーツ", category: "supplies",
     sizes: ["シングル", "セミダブル", "ダブル", "クイーン"], defaultSize: "クイーン",
     priority: "당일", minBudget: 6000, mode: ["day1"],
@@ -105,15 +143,24 @@ const items = [
   { id: "dryer", title: "헤어드라이어", base: "ヘアドライヤー", category: "appliance",
     priority: "당일", minBudget: 3000, mode: ["day1"],
     note: "도착 당일부터 필요합니다.",
-    pick: { name: "SALONIA 스피디 이온드라이어(공식)", price: 5918, rating: "4.18", reviews: "8,866", url: "https://item.rakuten.co.jp/kobe-beauty-labo/sal004/" } },
+    picks: {
+      budget: { name: "테스콤 TD200 드라이어(가성비·정평)", price: 2998, rating: "4.42", reviews: "1,509", url: "https://item.rakuten.co.jp/life-inc/110126-0951-0009/" },
+      mid: { name: "대풍량 마이너스이온 드라이어", price: 8980, rating: "4.54", reviews: "2,846", url: "https://item.rakuten.co.jp/kukuya/nonubnano/" },
+      premium: { name: "파나소닉 나노케어 EH-NA0K(정평)", price: 34967, rating: "4.68", reviews: "1,110", url: "https://item.rakuten.co.jp/panasonic-store/eh-na0j-a/" } } },
   { id: "bidet", title: "비데(온수세정변좌)", base: "温水洗浄便座 ウォシュレット 貯湯式", category: "appliance",
     priority: "첫 주", minBudget: 17000, mode: ["week1"],
     note: "일본 자취 변기엔 비데가 없거나 낡은 경우가 많아 직접 다는 경우가 많습니다. 임대라도 기존 변좌를 떼고 자가 설치 가능(공구 최소·분기수전 연결, 근처 콘센트 필요). 저탕식(貯湯式)이 저렴하고 1인용에 충분합니다. ★추천은 東芝 SCS-T160(리뷰 최다). 더 저렴·고평점 대안: 파나소닉 ビューティ·トワレ CH951SWS(라쿠텐 1위 ¥17,480 ★4.67), 리모컨형은 東芝 SCS-T260. 이미 설치돼 있으면 불필요.",
-    pick: { name: "東芝 온수세정변좌 SCS-T160(貯湯式, 리뷰 1,000)", price: 19596, rating: "4.54", reviews: "1,000", url: "https://item.rakuten.co.jp/jyupro/scs-t160/" } },
+    picks: {
+      budget: { name: "サンウォッシュ DLNC170LW(저탕식)", price: 16500, rating: "4.55", reviews: "150", url: "https://item.rakuten.co.jp/asahieito/dlnc170lw/" },
+      mid: { name: "東芝 온수세정변좌 SCS-T160(저탕식, 리뷰 최다)", price: 19596, rating: "4.54", reviews: "1,000", url: "https://item.rakuten.co.jp/jyupro/scs-t160/" },
+      premium: { name: "TOTO 워시렛 TCF2223E(정평 브랜드)", price: 31374, rating: "4.67", reviews: "21", url: "https://item.rakuten.co.jp/jyupro/tcf2223e-nw1/" } } },
   { id: "circulator", title: "서큘레이터/선풍기", base: "サーキュレーター 扇風機", category: "appliance",
     priority: "첫 주", minBudget: 4000, mode: ["week1"],
     note: "환기·빨래 건조·냉난방 효율에 유용합니다.",
-    pick: { name: "DONDON 서큘레이터 360°(세척 가능)", price: 4980, rating: "4.43", reviews: "1.1만", url: "https://item.rakuten.co.jp/dondon/sq-001/" } },
+    picks: {
+      budget: { name: "아이리스오야마 WOOZOO(가성비)", price: 2180, rating: "4.39", reviews: "2,456", url: "https://item.rakuten.co.jp/kadenrand/i271000/" },
+      mid: { name: "아이리스오야마 WOOZOO DC모터", price: 6930, rating: "4.45", reviews: "1,740", url: "https://item.rakuten.co.jp/kadenrand/271008/" },
+      premium: { name: "BALMUDA GreenFan EGF-1800(정평)", price: 39600, rating: "4.59", reviews: "3,059", url: "https://item.rakuten.co.jp/roomy/0001gft/" } } },
   { id: "stove", title: "탁상 콘로(IH/가스)", base: "卓上IHコンロ 一人暮らし", category: "appliance",
     priority: "당일", minBudget: 4500, mode: ["day1"],
     note: "빌트인 콘로가 없는 방이 많습니다. 입주 전 확인하고, 없으면 탁상 IH나 카세트콘로부터 시작하세요.",
@@ -178,12 +225,17 @@ const items = [
     pick: { name: "야마젠 리빙 선풍기 YLT-AG30E", price: 3990, rating: "4.5", reviews: "5,071", url: "https://item.rakuten.co.jp/e-kurashi/1467895/" } },
   { id: "airfryer", title: "에어프라이어", base: "ノンフライヤー エアフライヤー", category: "appliance",
     priority: "낮음", minBudget: 7000, mode: ["week1"],
-    note: "자취 요리 활용도가 높습니다. 4L 이상이면 1인 기준 충분합니다.",
-    pick: { name: "COSORI 논프라이어 4.7L", price: 13980, rating: "4.67", reviews: "1,499", url: "https://item.rakuten.co.jp/ryohinseikatsukan/tsuhan-123-ea123-1/" } },
+    note: "자취 요리 활용도가 높습니다. 2~3L도 1인엔 충분합니다. (COSORI는 해외 리콜 이력이 있어 제외했습니다.)",
+    picks: {
+      budget: { name: "simplus 논프라이어 2L(가성비)", price: 4599, rating: "4.31", reviews: "262", url: "https://item.rakuten.co.jp/rcmdse/7s-4589668457303/" },
+      mid: { name: "아이리스오야마 컨벡션 논프라이 오븐", price: 11800, rating: "4.49", reviews: "88", url: "https://item.rakuten.co.jp/u-denki/576762/" },
+      premium: { name: "Russell Hobbs 에어프라이오븐 3L(정평)", price: 16500, rating: "4.73", reviews: "483", url: "https://item.rakuten.co.jp/sommelier/goods-01829/" } } },
   { id: "monitor", title: "모니터", base: "モニター 27インチ", category: "appliance",
     priority: "업무", minBudget: 12000, mode: ["work"],
-    note: "재택 업무용. 27인치 FHD가 가성비 기준점입니다. HDMI 케이블 동봉 여부를 확인하세요.",
-    pick: { name: "모니터 21.5~27형 선택(리뷰 최다)", price: 11999, rating: "4.74", reviews: "4,951", url: "https://item.rakuten.co.jp/qifeng/yc-238/" } },
+    note: "재택 업무용. 27인치 FHD가 가성비 기준점입니다. HDMI 케이블 동봉 여부를 확인하세요. 프리미엄급은 JAPANNEXT·I-O DATA·LG 27형 IPS(라쿠텐 리뷰는 적지만 정평 브랜드) — 요도바시/공식몰 병행 확인. 2~3대는 같은 모델로 맞추면 좋습니다.",
+    picks: {
+      budget: { name: "27형 FHD 180Hz(가성비, 무명 브랜드)", price: 18999, rating: "4.71", reviews: "898", url: "https://item.rakuten.co.jp/qifeng/yc-27/" },
+      mid: { name: "27형 WQHD 260Hz·3년보증(중간)", price: 30890, rating: "4.72", reviews: "336", url: "https://item.rakuten.co.jp/kksmart/hg-4k27/" } } },
   { id: "rug", title: "러그·바닥 매트", base: "ラグ 洗える オールシーズン", category: "furniture",
     priority: "낮음", minBudget: 1500, mode: ["week1"],
     note: "바닥 생활 소음·냉기 완화. 여름엔 세탁 가능한 얇은 타입부터 시작하세요.",
@@ -918,19 +970,73 @@ function toggleItemDetail(node) {
   detail.classList.toggle("hidden", isOpen);
 }
 
+const PICK_TIER_ORDER = ["budget", "mid", "premium"];
+const PICK_TIER_LABELS = { budget: "최저가", mid: "중간", premium: "프리미엄" };
+
+function fillPickBox(node, pick) {
+  const pickBox = node.querySelector(".item-pick-box");
+  pickBox.classList.remove("hidden");
+  node.querySelector(".item-pick-name").textContent = pick.name;
+  node.querySelector(".item-pick-meta").innerHTML =
+    `★${pick.rating} · 리뷰 ${pick.reviews} · ${yen(pick.price)}~ <em>2026-07 확인</em>`;
+  node.querySelector(".item-pick-go").href = pick.url;
+}
+
+function renderPickTiers(node, thing) {
+  const pickBtn = node.querySelector(".item-pick-btn");
+  const pickBox = node.querySelector(".item-pick-box");
+  const tiersWrap = node.querySelector(".pick-tiers");
+  if (!tiersWrap) return;
+  const picks = thing.picks;
+  const available = PICK_TIER_ORDER.filter((tier) => picks[tier]);
+  if (!available.length) {
+    tiersWrap.classList.add("hidden");
+    pickBtn.classList.add("hidden");
+    pickBox.classList.add("hidden");
+    return;
+  }
+  pickBtn.classList.add("hidden");
+  tiersWrap.classList.remove("hidden");
+  tiersWrap.innerHTML = "";
+
+  const selectTier = (tier) => {
+    tiersWrap.querySelectorAll(".pick-tier-btn").forEach((btn) => {
+      const active = btn.dataset.tier === tier;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", String(active));
+    });
+    fillPickBox(node, picks[tier]);
+  };
+
+  available.forEach((tier) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "pick-tier-btn";
+    btn.dataset.tier = tier;
+    btn.textContent = PICK_TIER_LABELS[tier];
+    btn.setAttribute("aria-pressed", "false");
+    btn.addEventListener("click", () => selectTier(tier));
+    tiersWrap.append(btn);
+  });
+
+  selectTier(picks.mid ? "mid" : available[0]);
+}
+
 function applyPick(node, thing) {
   const pickBtn = node.querySelector(".item-pick-btn");
   const pickBox = node.querySelector(".item-pick-box");
   if (!pickBtn || !pickBox) return;
+  if (thing.picks) {
+    renderPickTiers(node, thing);
+    return;
+  }
+  const tiersWrap = node.querySelector(".pick-tiers");
+  if (tiersWrap) tiersWrap.classList.add("hidden");
   const pick = thing.pick;
   if (pick) {
     pickBtn.href = pick.url;
     pickBtn.classList.remove("hidden");
-    pickBox.classList.remove("hidden");
-    node.querySelector(".item-pick-name").textContent = pick.name;
-    node.querySelector(".item-pick-meta").innerHTML =
-      `★${pick.rating} · 리뷰 ${pick.reviews} · ${yen(pick.price)}~ <em>2026-07 확인</em>`;
-    node.querySelector(".item-pick-go").href = pick.url;
+    fillPickBox(node, pick);
   } else {
     pickBtn.classList.add("hidden");
     pickBox.classList.add("hidden");
@@ -976,13 +1082,28 @@ function renderSetComponents(node, item) {
   item.setItems.forEach((id) => {
     const comp = items.find((x) => x.id === id);
     if (!comp) return;
-    const mp = comp.pick ? null : (shopsForItem(comp)[0] || rakuten);
-    const a = document.createElement("a");
-    a.target = "_blank";
-    a.rel = "noreferrer";
-    a.href = comp.pick ? comp.pick.url : searchUrl(mp, comp);
-    a.textContent = comp.pick ? `★ ${comp.title}` : `${comp.title} 검색`;
-    row.append(a);
+    if (comp.picks) {
+      const label = document.createElement("span");
+      label.className = "set-component-label";
+      label.textContent = `${comp.title}:`;
+      row.append(label);
+      PICK_TIER_ORDER.filter((tier) => comp.picks[tier]).forEach((tier) => {
+        const a = document.createElement("a");
+        a.target = "_blank";
+        a.rel = "noreferrer";
+        a.href = comp.picks[tier].url;
+        a.textContent = PICK_TIER_LABELS[tier];
+        row.append(a);
+      });
+    } else {
+      const mp = comp.pick ? null : (shopsForItem(comp)[0] || rakuten);
+      const a = document.createElement("a");
+      a.target = "_blank";
+      a.rel = "noreferrer";
+      a.href = comp.pick ? comp.pick.url : searchUrl(mp, comp);
+      a.textContent = comp.pick ? `★ ${comp.title}` : `${comp.title} 검색`;
+      row.append(a);
+    }
   });
   wrap.classList.remove("hidden");
 }
