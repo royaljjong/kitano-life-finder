@@ -10,11 +10,10 @@ const items = [
   { id: "mattress", title: "매트리스", base: "マットレス 低反発", category: "furniture",
     sizes: ["シングル", "セミダブル", "ダブル", "クイーン"], defaultSize: "クイーン",
     priority: "당일", minBudget: 13000, mode: ["day1"],
-    note: "푹신한 저반발(低反発) 기준. 퀸은 압축·롤 배송이면 반입이 쉽습니다. 저반발은 여름에 다소 더울 수 있어 냉감 패드(침구 세트 참고)를 위에 깔면 좋습니다. 추천 상품 페이지에서 クイーン(퀸)을 선택하세요. 3단 모두 퀸 선택 시 표시가와 다를 수 있으니 사이즈·가격을 상품페이지에서 확인하세요.",
+    note: "푹신한 저반발(低反発) 기준. 퀸은 압축·롤 배송이면 반입이 쉽습니다. 저반발은 여름에 다소 더울 수 있어 냉감 패드(침구 세트 참고)를 위에 깔면 좋습니다. 추천 상품 페이지에서 クイーン(퀸)을 선택하세요. 3단 모두 퀸 선택 시 표시가와 다를 수 있으니 사이즈·가격을 상품페이지에서 확인하세요. 표시가는 싱글 기준 '부터' 가격이라 퀸은 더 비쌉니다. 라쿠텐엔 퀸 플러시(저반발) 완전 매트리스가 리뷰 적으니, 더 좋은 프리미엄은 니토리 매장(Nスリープ ソフト 등) 병행을 추천합니다.",
     picks: {
       budget: { name: "저반발 매트리스 8cm(가성비, 퀸 선택)", price: 6999, rating: "4.33", reviews: "6,462", url: "https://item.rakuten.co.jp/tansu/13810004/" },
-      mid: { name: "저반발 매트리스 8cm やわらか 90N(퀸)", price: 13420, rating: "4.28", reviews: "3.8만", url: "https://item.rakuten.co.jp/maxshare/a05750_sale/" },
-      premium: { name: "트루슬리퍼 프레미어리치(저반발 정평)", price: 39800, rating: "4.42", reviews: "1,332", url: "https://item.rakuten.co.jp/shopjapan/trpr-hnss/" } } },
+      mid: { name: "저반발 매트리스 8cm やわらか 90N(퀸)", price: 13420, rating: "4.28", reviews: "3.8만", url: "https://item.rakuten.co.jp/maxshare/a05750_sale/" } } },
   { id: "bed", title: "침대 프레임 또는 DIY 받침", base: "ベッドフレーム すのこ", category: "furniture",
     sizes: ["シングル", "セミダブル", "ダブル", "クイーン"], defaultSize: "クイーン",
     priority: "첫 주", minBudget: 8000, mode: ["week1"],
