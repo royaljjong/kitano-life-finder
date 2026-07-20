@@ -34,11 +34,11 @@ const items = [
     note: "장시간 착석엔 푹신한 쿠션형(포켓코일 좌면)이 편합니다. 메시보다 한국 PC의자 스타일. 오토만·리클라이닝이 있으면 휴식에 좋습니다. 방 폭과 냄새/조립을 리뷰에서 확인하세요.",
     pick: { name: "Dowinx 패브릭 게이밍체어(포켓코일·오토만, 1년보증)", price: 14280, rating: "4.37", reviews: "493", url: "https://item.rakuten.co.jp/rt-dowinx/6658/" } },
   { id: "applianceset", title: "리유스 가전 3점 세트(중고)", base: "中古家電セット 3点 冷蔵庫 洗濯機 電子レンジ", category: "appliance",
-    priority: "첫 주", minBudget: 34000, mode: ["week1"],
+    priority: "첫 주", minBudget: 34000, mode: ["week1"], setItems: ["fridge", "washer", "microwave"],
     note: "혼자 자취 가전은 중고 리유스 3점 세트(냉장고+세탁기+전자레인지)가 가장 저렴합니다. 도쿄권(하치오지 포함) 배송·설치 무료, 보증(3개월~2년) 있는 매장 기준 3점 ¥34,000~40,000(배송·설치 포함). ★추천은 트레팩(배송·설치 무료, 리뷰 758). 배송에 며칠~1주 걸리니 7/28 입주 전 도착시키려면 이번 주(~7/21경) 주문 권장. 밥솥/전기포트/청소기까지 포함되는 4~6점 세트도 있습니다. 신뢰 매장: トレファク(트레팩), 楽天 パワーセラー(국산 고년식), リユース家電Happy, いいね家電, ヤ마다 아웃렛.",
     pick: { name: "트레팩 중고 가전3점 세트(냉장고+세탁기+레인지, 배송·설치 무료)", price: 39800, rating: "4.41", reviews: "758", url: "https://item.rakuten.co.jp/trefac-f/999005/" } },
   { id: "washer", title: "세탁기", base: "洗濯機 一人暮らし 5kg 設置", category: "appliance",
-    priority: "첫 주", minBudget: 26000, mode: ["week1"],
+    priority: "첫 주", minBudget: 26000, mode: ["week1"], inSet: "applianceset",
     note: "배송/설치/수거 비용을 같이 확인해야 실제 총액이 맞습니다. 중고 리유스 세트(냉장고+세탁기+전자레인지)로 한 번에 해결하는 게 가장 저렴합니다 — '리유스 가전 3점 세트' 품목을 먼저 보세요. 세트가 일정·재고가 안 맞을 때 아래 신품이 대안입니다.",
     pick: { name: "아이리스오야마 세탁기 6kg IAW-T604", price: 29800, rating: "4.37", reviews: "1,720", url: "https://item.rakuten.co.jp/enetroom/573828/" } },
   { id: "cookware", title: "냄비/프라이팬", base: "鍋 フライパン セット IH対応", category: "kitchen",
@@ -62,11 +62,11 @@ const items = [
     note: "가방·우산은 이미 보유. Suica/PASMO를 쓰기 시작하면 릴 부착 케이스가 개찰에서 바로 편해집니다.",
     pick: { name: "릴 부착 패스케이스(anan 게재)", price: 1280, rating: "4.56", reviews: "3,153", url: "https://item.rakuten.co.jp/rareleak/fo-idcase-rbn-in/" } },
   { id: "fridge", title: "냉장고", base: "冷蔵庫 一人暮らし 170L", category: "appliance",
-    priority: "첫 주", minBudget: 28000, mode: ["week1"],
+    priority: "첫 주", minBudget: 28000, mode: ["week1"], inSet: "applianceset",
     note: "자취 요리엔 150L보다 170L 전후가 여유 있습니다. 신품 170L은 ¥28,000~. 배송·설치·기존 처분 비용을 함께 확인하세요. 세트(리유스)로 세탁기·전자레인지와 함께 구매하는 게 저렴합니다 — '리유스 가전 3점 세트' 참조. 신품 단품은 대안.",
     pick: { name: "아이리스오야마 냉장고 170L 2도어", price: 32800, rating: "4.02", reviews: "260", url: "https://item.rakuten.co.jp/enetroom/573739/" } },
   { id: "microwave", title: "전자레인지", base: "電子レンジ 一人暮らし", category: "appliance",
-    priority: "첫 주", minBudget: 8000, mode: ["week1"],
+    priority: "첫 주", minBudget: 8000, mode: ["week1"], inSet: "applianceset",
     note: "동일본(50Hz)/서일본(60Hz) 겸용인지 확인하면 재이사에도 안전합니다. 리유스 3점 세트에 대개 포함됩니다 — 세트 품목 우선. 단품 신품은 대안.",
     pick: { name: "아이리스오야마 전자레인지 17L", price: 8980, rating: "4.36", reviews: "2,376", url: "https://item.rakuten.co.jp/kadenrand/560082/" } },
   { id: "ricecooker", title: "밥솥", base: "炊飯器 3合", category: "appliance",
@@ -106,6 +106,10 @@ const items = [
     priority: "당일", minBudget: 3000, mode: ["day1"],
     note: "도착 당일부터 필요합니다.",
     pick: { name: "SALONIA 스피디 이온드라이어(공식)", price: 5918, rating: "4.18", reviews: "8,866", url: "https://item.rakuten.co.jp/kobe-beauty-labo/sal004/" } },
+  { id: "bidet", title: "비데(온수세정변좌)", base: "温水洗浄便座 ウォシュレット 貯湯式", category: "appliance",
+    priority: "첫 주", minBudget: 17000, mode: ["week1"],
+    note: "일본 자취 변기엔 비데가 없거나 낡은 경우가 많아 직접 다는 경우가 많습니다. 임대라도 기존 변좌를 떼고 자가 설치 가능(공구 최소·분기수전 연결, 근처 콘센트 필요). 저탕식(貯湯式)이 저렴하고 1인용에 충분합니다. ★추천은 東芝 SCS-T160(리뷰 최다). 더 저렴·고평점 대안: 파나소닉 ビューティ·トワレ CH951SWS(라쿠텐 1위 ¥17,480 ★4.67), 리모컨형은 東芝 SCS-T260. 이미 설치돼 있으면 불필요.",
+    pick: { name: "東芝 온수세정변좌 SCS-T160(貯湯式, 리뷰 1,000)", price: 19596, rating: "4.54", reviews: "1,000", url: "https://item.rakuten.co.jp/jyupro/scs-t160/" } },
   { id: "circulator", title: "서큘레이터/선풍기", base: "サーキュレーター 扇風機", category: "appliance",
     priority: "첫 주", minBudget: 4000, mode: ["week1"],
     note: "환기·빨래 건조·냉난방 효율에 유용합니다.",
@@ -893,6 +897,7 @@ function visibleItems() {
   const needle = filterInput.value.trim().toLowerCase();
   return items
     .filter((item) => {
+      if (item.inSet) return false; // 세트 구성품은 flat 목록에서 제외(세트 상세에서만 노출)
       const modeMatch = mode === "all" || item.mode.includes(mode);
       const text = `${item.title} ${item.base} ${item.note}`.toLowerCase();
       return modeMatch && (!needle || text.includes(needle));
@@ -958,6 +963,30 @@ function renderShopRecs(node, thing) {
   });
 }
 
+function renderSetComponents(node, item) {
+  const wrap = node.querySelector(".item-set-components");
+  const row = node.querySelector(".set-components-row");
+  if (!wrap || !row) return;
+  if (!item.setItems || !item.setItems.length) {
+    wrap.classList.add("hidden");
+    return;
+  }
+  row.innerHTML = "";
+  const rakuten = marketplaces.find((mp) => mp.id === "rakuten");
+  item.setItems.forEach((id) => {
+    const comp = items.find((x) => x.id === id);
+    if (!comp) return;
+    const mp = comp.pick ? null : (shopsForItem(comp)[0] || rakuten);
+    const a = document.createElement("a");
+    a.target = "_blank";
+    a.rel = "noreferrer";
+    a.href = comp.pick ? comp.pick.url : searchUrl(mp, comp);
+    a.textContent = comp.pick ? `★ ${comp.title}` : `${comp.title} 검색`;
+    row.append(a);
+  });
+  wrap.classList.remove("hidden");
+}
+
 function buildItemCard(item) {
   const node = itemTemplate.content.firstElementChild.cloneNode(true);
   const checkbox = node.querySelector("input");
@@ -998,16 +1027,6 @@ function buildItemCard(item) {
 
   node.querySelector(".item-keyword").textContent = `검색어: ${keywordFor(item)}`;
 
-  const primaryLink = node.querySelector(".item-primary-link");
-  const primaryShop = primaryShopFor(item);
-  if (primaryShop && !item.pick) {
-    primaryLink.href = searchUrl(primaryShop, item);
-    primaryLink.textContent = `${primaryShop.name} 검색`;
-    primaryLink.classList.remove("hidden");
-  } else {
-    primaryLink.classList.add("hidden");
-  }
-
   const links = node.querySelector(".link-row");
   shopsForItem(item).forEach((mp) => {
     const link = document.createElement("a");
@@ -1019,6 +1038,7 @@ function buildItemCard(item) {
   });
 
   renderShopRecs(node, item);
+  renderSetComponents(node, item);
 
   node.querySelector(".item-expand").addEventListener("click", () => toggleItemDetail(node));
 
@@ -1069,15 +1089,6 @@ function renderItems() {
 
 function refreshItemCard(node, item) {
   node.querySelector(".item-keyword").textContent = `검색어: ${keywordFor(item)}`;
-  const primaryShop = primaryShopFor(item);
-  const primaryLink = node.querySelector(".item-primary-link");
-  if (primaryShop && !item.pick) {
-    primaryLink.href = searchUrl(primaryShop, item);
-    primaryLink.textContent = `${primaryShop.name} 검색`;
-    primaryLink.classList.remove("hidden");
-  } else {
-    primaryLink.classList.add("hidden");
-  }
   const links = node.querySelector(".link-row");
   const anchors = links.querySelectorAll("a");
   const shops = shopsForItem(item);
@@ -1103,16 +1114,6 @@ function buildKitCard(kit) {
   node.querySelector(".item-price").textContent = `${yen(kit.minBudget)}~`;
   node.querySelector(".item-keyword").textContent = `검색어: ${keywordFor(kit)}`;
   node.querySelector(".item-note").textContent = kit.note;
-
-  const primaryLink = node.querySelector(".item-primary-link");
-  const primaryShop = primaryShopFor(kit);
-  if (primaryShop && !kit.pick) {
-    primaryLink.href = searchUrl(primaryShop, kit);
-    primaryLink.textContent = `${primaryShop.name} 검색`;
-    primaryLink.classList.remove("hidden");
-  } else {
-    primaryLink.classList.add("hidden");
-  }
 
   const links = node.querySelector(".link-row");
   shopsForItem(kit).forEach((mp) => {
